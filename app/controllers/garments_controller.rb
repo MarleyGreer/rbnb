@@ -25,6 +25,8 @@ class GarmentsController < ApplicationController
 
   def create
     @garment = Garment.new(garment_params)
+    @garment.user = current_user
+    @garment.save
   end
 
   def destroy
@@ -39,6 +41,6 @@ class GarmentsController < ApplicationController
   end
 
   def garment_params
-    params.require(:garment).permit()
+    params.require(:garment).permit(:name, :description, :price, :category, :size, :colour, :photo, :address)
   end
 end
