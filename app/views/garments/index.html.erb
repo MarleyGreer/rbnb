@@ -1,0 +1,14 @@
+
+<div>
+  <%= @garments.each do |garment| %>
+    <li> <%= garment.name %> </li>
+    <li> <%= garment.description %> </li>
+    <li> <%= garment.price %> </li>
+    <li> <%= garment.category %> </li>
+    <li> <%= garment.size %> </li>
+    <li> <%= garment.colour %> </li>
+    <li> <%= garment.address %> </li>
+    <li> <%= link_to garment.name, garment_path(garment) %> </li>
+  <%= end %>
+
+</div>
