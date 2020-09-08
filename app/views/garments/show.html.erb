@@ -14,7 +14,9 @@
             <li> <%= @garment.address %> </li>
     </div>
     <div >
-      <%= link_to "Back to all garments", garments_path %>
+      <%= link_to "Back to all garments", garments_path %> <br>
+      <%= link_to "Delete garment", garments_path, method: :delete, data: { confirm: "Are you sure?" } %>
+
 
     </div>
   </div>

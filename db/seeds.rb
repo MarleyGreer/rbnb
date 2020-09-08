@@ -11,10 +11,10 @@ require 'faker'
 category = ['Dress', 'Top', 'Knitwear', 'Skirt', 'Pant', 'Jacket', 'Denim', 'Shoes', 'Accessories']
 puts 'Creating 10 fake pieces of clothing....'
 
-@user = User.new(email: 'trent.skurrie@git.com.au', password: 'supercoach')
+@user = User.new(email: 'anurag.vashist@gmail.com', password: '123456')
 @user.save
 
-10.times do 
+10.times do
     garment = Garment.new(
         name:   Faker::Vehicle.model,
         description: Faker::Movie.quote,
