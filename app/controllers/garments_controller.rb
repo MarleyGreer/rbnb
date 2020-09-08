@@ -21,16 +21,12 @@ class GarmentsController < ApplicationController
 
   def update
     @garment.update(garment_params)
-    redirect_to garment_path(@garment)
   end
 
   def create
     @garment = Garment.new(garment_params)
-    if @garment.save
-      redirect_to garment_path(@garment)
-    else
-      render :new
-    end
+    @garment.user = current_user
+    @garment.save
   end
 
   def destroy
