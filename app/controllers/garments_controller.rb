@@ -29,6 +29,7 @@ class GarmentsController < ApplicationController
 
   def destroy
     @garment.destroy
+    redirect_to garments_path
   end
 
   private
