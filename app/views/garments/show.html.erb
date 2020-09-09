@@ -1,0 +1,22 @@
+<div class="container">
+
+  <h1><%= @garment.name %></h1>
+
+
+  <div >
+    <div >
+
+            <li> <%= @garment.description %> </li>
+            <li> <%= @garment.price %> </li>
+            <li> <%= @garment.category %> </li>
+            <li> <%= @garment.size %> </li>
+            <li> <%= @garment.colour %> </li>
+            <li> <%= @garment.address %> </li>
+    </div>
+    <div >
+      <%= link_to "Back to all garments", garments_path %> <br>
+      <%= link_to "Delete garment", garment_path(@garment), method: :delete, data: { confirm: "Are you sure?" } %>
+
+
+    </div>
+  </div>
