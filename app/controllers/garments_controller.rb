@@ -1,5 +1,5 @@
 class GarmentsController < ApplicationController
-  before_action :set_cocktail, only: [:show, :edit, :update, :destroy]
+  before_action :set_garment, only: [:show, :edit, :update, :destroy]
 
   def home
   end
@@ -38,6 +38,6 @@ class GarmentsController < ApplicationController
   end
 
   def garment_params
-    params.require(:garment).permit()
+    params.require(:garment).permit(:name, :description, :price, :category, :size, :colour, :address)
   end
 end

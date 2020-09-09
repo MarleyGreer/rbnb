@@ -1,28 +1,42 @@
 class BookingsController < ApplicationController
-  def index
-  end
+    def index
+      @bookings = Booking.all
+    end
 
-  def show
-  end
+    def show
+    end
 
-  def new
-  end
+    def new
+      @booking = Booking.new
+      @garment = Garment.find(params[:garment_id])
+    end
 
-  def create
-  end
+    def create
+      @booking = Booking.new(booking_params)
+      @garment = Garment.find(params[:garment_id])
+      @booking.garment = @garment
+        if @booking.save
+          redirect_to garment_path(@garment)
+        else render :new
+      end
+    end
 
-  def edit
-  end
+    def edit
+    end
 
-  def update
-  end
+    def update
+    end
 
-  def accept
-  end
+    def accept
+    end
 
-  def decline
-  end
+    def decline
+    end
 
-  def cancel
-  end
+    def cancel
+    end
+
+    def booking_params
+      params.require(:booking).permit(:start_date, :end_date)
+    end
 end
