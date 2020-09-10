@@ -1,22 +1,29 @@
 <div class="container">
+  <ul class="nav filter-bar" style="margin-top: 50px;">
 
-  <h1><%= @garment.name %></h1>
+  </ul>
 
+  <div style="margin-top: 50px" >
+    <div class="container index">
+      <div style="width: 50%">
+      <img class="card-img-top" style="width: 90%; height: 500px; background-size: cover; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @garment.photos[0].key, height: 300, width: 400, crop: :fill %>')">
+      </div>
+      <div style="width: 50%">
+        <h1><%= @garment.name %></h1>
+        <p> <%= @garment.description %> </p>
+        <br>
+        <h3> <%= "$#{@garment.price}" %> </h3>
+        <p> <%= "#{@garment.category} - Size: #{@garment.size} - Color: #{@garment.colour} " %> </p>
+        <br>
+        <p> <%= @garment.address %> </p>
+      
+      <div >
+        <%= link_to "Back to all garments", garments_path %> <br>
+        <%= link_to "Delete garment", garment_path(@garment), method: :delete, data: { confirm: "Are you sure?" } %>
+      </div>
+      <br>
+      <%= link_to "Book", new_garment_booking_path(@garment), class: "btn btn-primary"%>
 
-  <div >
-    <div >
-
-            <li> <%= @garment.description %> </li>
-            <li> <%= @garment.price %> </li>
-            <li> <%= @garment.category %> </li>
-            <li> <%= @garment.size %> </li>
-            <li> <%= @garment.colour %> </li>
-            <li> <%= @garment.address %> </li>
-    </div>
-    <div >
-      <%= link_to "Back to all garments", garments_path %> <br>
-      <%= link_to "Delete garment", garment_path(@garment), method: :delete, data: { confirm: "Are you sure?" } %>
-
-
+      </div>
     </div>
   </div>

@@ -51,17 +51,13 @@
 
 <div class="container index">
   <% @garments.each do |garment| %>
-    <div class="card" style="width: 18%; margin: 1%">
-    <img src="..." class="card-img-top" alt="...">
+    <div class="card" style="width: 23%; margin: 1%">
+    <img class="card-img-top" style="height: 25vh; width: 100%; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path garment.photos[0].key, height: 300, width: 400, crop: :fill %>')">
       <div class="card-body">
-        <h5 class='card-title'> <%= garment.name %> </h5>
-        <h6 class='card-subtitle mb-2 text-muted'> <%= garment.category %> </li>
-        <br>
+        <h5 class='card-title'> <%= link_to garment.name, garment_path(garment) %> </h5>
         <p class='card-text'> <%= garment.description %> </p>
+        <p> <%= "#{garment.category} - Size: #{garment.size} - Color: #{garment.colour}" %> </p>
         <p> <%= "$#{garment.price}" %> </p>
-        <li> <%= "Size: #{garment.size} - Color: #{garment.colour}" %> </li>
-        <p> <%= garment.address %> </p>
-        <p> <%= link_to garment.name, garment_path(garment) %> </p>
       </div>
     </div>  
   <% end %>
