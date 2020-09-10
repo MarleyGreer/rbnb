@@ -21,17 +21,12 @@ class GarmentsController < ApplicationController
 
   def update
     @garment.update(garment_params)
-    redirect_to garment_path(@garment)
   end
 
   def create
     @garment = Garment.new(garment_params)
     @garment.user = current_user
-    if @garment.save
-      redirect_to garment_path(@garment)
-    else
-      render :new
-    end
+    @garment.save
   end
 
   def destroy
@@ -46,6 +41,6 @@ class GarmentsController < ApplicationController
   end
 
   def garment_params
-    params.require(:garment).permit(:name, :description, :price, :category, :size, :colour, :address, photos: [])
+    params.require(:garment).permit(:name, :description, :price, :category, :size, :colour, :photo, :address)
   end
 end
