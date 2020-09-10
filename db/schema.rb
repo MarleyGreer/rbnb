@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_09_08_103552) do
-
+ActiveRecord::Schema.define(version: 2020_09_10_090050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,13 +41,11 @@ ActiveRecord::Schema.define(version: 2020_09_08_103552) do
     t.datetime "end_date"
     t.string "status"
     t.integer "total_price"
-    t.bigint "review_id", null: false
     t.bigint "user_id", null: false
     t.bigint "garment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["garment_id"], name: "index_bookings_on_garment_id"
-    t.index ["review_id"], name: "index_bookings_on_review_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -72,6 +68,7 @@ ActiveRecord::Schema.define(version: 2020_09_08_103552) do
     t.integer "rating"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "booking_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,7 +87,6 @@ ActiveRecord::Schema.define(version: 2020_09_08_103552) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "garments"
-  add_foreign_key "bookings", "reviews"
   add_foreign_key "bookings", "users"
   add_foreign_key "garments", "users"
 end
