@@ -1,1 +1,42 @@
 // Specific CSS for your home-page
+.background-home {
+   background-image: linear-gradient(315deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.7)), asset-url('clothes-background.jpeg');
+   height: 100vh;
+   width: 100%;
+}
+
+.sign-in-box{
+  width: 32%;
+  background: white;
+  padding: 24px;
+  margin-right: 10%;
+  font-family: 'Barlow Condensed', sans-serif;
+  box-shadow: 2px 2px 22px black;
+
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+  }
+
+  .forgot-password {
+    color: black
+  }
+}
+
+.flex-box{
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+}
+
+.home-header{
+    line-height: 7rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 9.5rem;
+    letter-spacing: -3px;
+    text-shadow: 1px 1px 10px grey;
+}
+
+.home-link {
+  color: black;
+}
