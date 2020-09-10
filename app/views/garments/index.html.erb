@@ -1,14 +1,70 @@
+<div class="container">
+  <ul class="nav filter-bar">
+  <li class="nav-item filterselect">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputGroupSelect01">Category</label>
+    <select class="custom-select" id="inputGroupSelect01">
+        <% i = 1 %>
+        <option selected>Choose...</option>
+        <%= @garments.select("DISTINCT(CATEGORY)").each do |category| %>
+          <option value = <%i%>><%= category.category %></option>
+          <% i += 1%>
+        <% end %>
+    </select>
+    </div>
+  </div>
+  </li>
+  <li class="nav-item filterselect">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputGroupSelect01">Category</label>
+    <select class="custom-select" id="inputGroupSelect01">
+      <option selected>Choose...</option>
+      <option value="1">$0 - $50</option>
+      <option value="2">$50 - $100</option>
+      <option value="3">$100 - $200</option>
+      <option value="4">$200+</option>
+    </select>
+    </div>
+  </div>
+  </li>
+    <% if @garments.count > 10 %>
+      <ul class="pagination filterselect">
+      <li class="page-item disabled">
+        <span class="page-link">Previous</span>
+      </li>
+      <% i = 1%>
+      <% ((@garments.count)/10.to_f).ceil.times do %>
+      <li class="page-item"><a class="page-link" href="#"><%=i%></a></li>
+      <% i = i + 1%>
+      <% end %>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+      </ul>
+    <% end %>
 
-<div>
+</ul>
+
+</div>
+
+<div class="container index">
   <% @garments.each do |garment| %>
-    <li> <%= garment.name %> </li>
-    <li> <%= garment.description %> </li>
-    <li> <%= garment.price %> </li>
-    <li> <%= garment.category %> </li>
-    <li> <%= garment.size %> </li>
-    <li> <%= garment.colour %> </li>
-    <li> <%= garment.address %> </li>
-    <li> <%= link_to garment.name, garment_path(garment) %> </li>
+    <div class="card" style="width: 18%; margin: 1%">
+    <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class='card-title'> <%= garment.name %> </h5>
+        <h6 class='card-subtitle mb-2 text-muted'> <%= garment.category %> </li>
+        <br>
+        <p class='card-text'> <%= garment.description %> </p>
+        <p> <%= "$#{garment.price}" %> </p>
+        <li> <%= "Size: #{garment.size} - Color: #{garment.colour}" %> </li>
+        <p> <%= garment.address %> </p>
+        <p> <%= link_to garment.name, garment_path(garment) %> </p>
+      </div>
+    </div>  
   <% end %>
 
 </div>
+

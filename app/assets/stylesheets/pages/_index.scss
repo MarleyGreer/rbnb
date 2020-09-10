@@ -1,2 +1,22 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.filter-bar {
+    margin-top: 20px;
+    justify-content: flex-end;
+    border-bottom: .75px solid black;
+}
+
+.filterselect {
+    margin-left: 20px;
+
+}
+
+
+.index {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 75%
+}
