@@ -9,6 +9,5 @@ const showoncardclick = () => {
     window.addEventListener('click', () => {
       $.get("<%= garment_path(garment) %>");
     });
-}
+};
 
-export { showoncardclick };

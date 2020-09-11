@@ -24,7 +24,6 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import { showoncardclick } from '../channels/index.js'
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
