@@ -5,7 +5,7 @@ class Booking < ApplicationRecord
 
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :status, inclusion: { in: ["Pending", "Accepted", "Declined", "Cancelled"] }
+  validates :status, inclusion: { in: ["pending", "accepted", "declined", "cancelled"] }
   validate :end_date_after_start_date
 
   def end_date_after_start_date
