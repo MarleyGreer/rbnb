@@ -14,8 +14,10 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @garment = Garment.find(params[:garment_id])
-    @booking.user = current_user
+    @booking.total_price = (params["booking"]["end_date"].to_datetime - params["booking"]["start_date"].to_datetime) * @garment.price
+    @booking.status = "Pending"
     @booking.garment = @garment
+    @booking.user = current_user
     if @booking.save
       redirect_to garment_path(@garment)
     else
@@ -39,6 +41,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :expires_at)
+    params.require(:booking).permit(:start_date, :end_date)
   end
 end
