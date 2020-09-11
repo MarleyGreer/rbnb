@@ -1,0 +1,15 @@
+<%= render "./shared/bookings-menu-buttons.html.erb" %>
+<h1>Declined </h1>
+  <% @bookings.each do |booking| %>
+  <%= cl_image_tag booking.garment.photos[0].key, height: 300, width: 400%><br>
+  <%= booking.status.capitalize %><br>
+  <%= booking.garment.name%><br>
+  <%= booking.start_date.strftime("%e %m %Y") %><br>
+  <%= booking.end_date.strftime("%e %m %Y") %><br>
+  <%= booking.total_price %><br>
+  <%= link_to "View Details", garment_path(booking.garment)  %><br><br>
+  <%= link_to "Confirm Booking", confirm_booking_path(booking), method: :patch, class: "btn btn-dark" %>
+  <%= link_to "Declined Booking", decline_booking_path(booking), method: :patch, class: "btn btn-dark" %>
+  <%= link_to "Cancel Booking", cancel_booking_path(booking), method: :patch, class: "btn btn-dark" %>
+  <br>
+  <% end %>

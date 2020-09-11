@@ -3,23 +3,16 @@
   <li class="nav-item filterselect">
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Category</label>
-    <select class="custom-select" id="inputGroupSelect01">
-        <% i = 1 %>
-        <option selected>Choose...</option>
-        <%= @garments.select("DISTINCT(CATEGORY)").each do |category| %>
-          <option value = <%i%>><%= category.category %></option>
-          <% i += 1%>
-        <% end %>
-    </select>
+      <label class="input-group-text"for="inputGroupSelect01">Category</label>
+      <%= collection_select(:garment, :category, Garment.all.select("DISTINCT(CATEGORY)"), :category, :category, prompt: true, class: "custom-select" ) %>
     </div>
   </div>
   </li>
   <li class="nav-item filterselect">
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Category</label>
-    <select class="custom-select" id="inputGroupSelect01">
+      <label class="input-group-text" for="inputGroupSelect01">Price</label>
+    <select class="custom-select" id="input-price">
       <option selected>Choose...</option>
       <option value="1">$0 - $50</option>
       <option value="2">$50 - $100</option>
@@ -51,19 +44,26 @@
 
 <div class="container index">
   <% @garments.each do |garment| %>
-    <div class="card" style="width: 18%; margin: 1%">
-    <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class='card-title'> <%= garment.name %> </h5>
-        <h6 class='card-subtitle mb-2 text-muted'> <%= garment.category %> </li>
-        <br>
-        <p class='card-text'> <%= garment.description %> </p>
-        <p> <%= "$#{garment.price}" %> </p>
-        <li> <%= "Size: #{garment.size} - Color: #{garment.colour}" %> </li>
-        <p> <%= garment.address %> </p>
-        <p> <%= link_to garment.name, garment_path(garment) %> </p>
+    <div class="card garmentcard" style="width: 25%">
+    <img class="card-img-top garmentimage" style="height: 0px; padding: 50%; width: 100%; background-image: url('<%= cl_image_path garment.photos[0].key, height: 300, width: 400, crop: :fill %>')">
+      <div class="card-body garmenttext">
+      <div>
+        <p style="font-size: 14px; line-height: 18px; align-items: center; display: flex; width: 100%"> <%= "#{garment.category} - Size: #{garment.size} - Color: #{garment.colour}" %> </p>
       </div>
-    </div>  
+      <div>
+        <h5 class='card-title' style="font-size: 16px; line-height: 20px"> <%= link_to garment.name, garment_path(garment) %> </h5>
+      </div>  
+      <div>
+        <p class='card-text' style="font-size: 14px; line-height: 16px"> <%= garment.description %> </p>
+      </div>
+      <div>
+        
+      </div>
+      <div>
+        <p> <%= "$#{garment.price}" %> </p>
+      </div>
+      </div>
+    </div>
   <% end %>
 
 </div>
