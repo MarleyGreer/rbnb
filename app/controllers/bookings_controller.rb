@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+before_action :set_booking, only: [:show, :edit, :update, :accept, :decline, :cancel]
+
   def index
     @bookings = Booking.all
   end
@@ -19,7 +21,7 @@ class BookingsController < ApplicationController
     @booking.garment = @garment
     @booking.user = current_user
     if @booking.save
-      redirect_to garment_path(@garment)
+      redirect_to booking_path(@booking)
     else
       render :new
     end
@@ -29,6 +31,8 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @booking.update(booking_params)
+    redirect_to booking_path(@booking)
   end
 
   def accept
@@ -38,6 +42,12 @@ class BookingsController < ApplicationController
   end
 
   def cancel
+  end
+
+  private
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 
   def booking_params

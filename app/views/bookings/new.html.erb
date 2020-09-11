@@ -1,11 +1,1 @@
-<h1 class="header">Make A Booking</h1>
-<br><br>
-<div class="container w-50 mb-3">
-  <%= simple_form_for [@garment, @booking] do |f| %>
-    <%= f.input :start_date, as: :date, label: 'Start Date', html5: true %>
-    <%= f.input :end_date, as: :date, label: 'End Date', html5: true %>
-    <br><br>
-    <%= f.button :submit, class: "btn-dark search-cocktails mb-3"%>
-  <% end %>
-</div>
-
+<%= render 'form', booking: [@garment, @booking] %>
