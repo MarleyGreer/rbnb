@@ -12,6 +12,15 @@
 
 }
 
+.garmentcard {
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 16px;
+}
 
 .index {
     margin-top: 20px;
@@ -19,4 +28,16 @@
     flex-direction: row;
     flex-wrap: wrap;
     height: 75%
+}
+
+.garmentimage {
+    border-radius: 8px;
+    display: block;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+}
+
+.garmenttext {
+    padding: 8px;
 }

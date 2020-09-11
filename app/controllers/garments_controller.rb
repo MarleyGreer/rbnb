@@ -5,7 +5,11 @@ class GarmentsController < ApplicationController
   end
 
   def index
+    if params[:category]
+      garments = Garment.where(category = params[:category])
+    else     
     @garments = Garment.all
+    end
   end
 
   def show
