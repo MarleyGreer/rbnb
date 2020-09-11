@@ -1,4 +1,13 @@
-<h2>Forgot your password?</h2>
+<div class="background-home flex-box">
+  <div>
+    <h1 class="home-header">BOOK <br>THE<br> LOOK</h1>
+
+  </div>
+  <br>
+
+    <div class="sign-in-box">
+
+<h2>FORGOT YOUR PASSWORD?</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
@@ -11,8 +20,11 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
+    <%= f.button :submit, "RESET PASSWORD", class: "btn btn-dark" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>
+</div>
