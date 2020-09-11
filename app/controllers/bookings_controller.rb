@@ -17,7 +17,7 @@ before_action :set_booking, only: [:show, :edit, :update, :accept, :decline, :ca
     @booking = Booking.new(booking_params)
     @garment = Garment.find(params[:garment_id])
     @booking.total_price = (params["booking"]["end_date"].to_datetime - params["booking"]["start_date"].to_datetime) * @garment.price
-    @booking.status = "Pending"
+    @booking.status = "pending"
     @booking.garment = @garment
     @booking.user = current_user
     if @booking.save
