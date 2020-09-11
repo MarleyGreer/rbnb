@@ -4,6 +4,19 @@ Rails.application.routes.draw do
   resources :garments do
     resources :bookings, only: [:new, :create]
   end
-  resources :bookings, only: [:show, :edit, :index, :destroy, :update]
+  resources :bookings, only: [:show, :edit, :index, :destroy, :update] do
+     collection do
+      get :all
+      get :confirmed
+      get :cancelled
+      get :pending
+      get :declined
+    end
+      member do
+        patch :confirm
+        patch :decline
+        patch :cancel
+    end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  end
 end
