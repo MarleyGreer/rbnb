@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
-before_action :set_booking, only: [:show, :edit, :update, :accept, :decline, :cancel]
-  
+before_action :set_booking, only: [:show, :edit, :update, :confirm, :decline, :cancel]
+
   def index
     @bookings = Booking.where("user = current_user")
   end
@@ -34,23 +34,20 @@ before_action :set_booking, only: [:show, :edit, :update, :accept, :decline, :ca
     @booking.update(booking_params)
     redirect_to booking_path(@booking)
   end
-  
+
   def confirm
-    @booking = Booking.find(params[:id])
     @booking.status = "confirmed"
     @booking.save
     redirect_to confirmed_bookings_path
   end
 
   def decline
-    @booking = Booking.find(params[:id])
     @booking.status = "declined"
     @booking.save
     redirect_to declined_bookings_path
   end
 
   def cancel
-    @booking = Booking.find(params[:id])
     @booking.status = "cancelled"
     @booking.save
     redirect_to cancelled_bookings_path
