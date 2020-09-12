@@ -9,22 +9,29 @@
       <img class="card-img-top" style="width: 90%; height: 500px; background-size: cover; background-image: url('<%= cl_image_path @garment.photos[0].key, height: 300, width: 400, crop: :fill %>')">
       </div>
       <div style="width: 50%; height: 500px; display: flex; flex-direction: column; justify-content: space-between">
-   
+
         <p> <%= @garment.description %> </p>
         <br>
         <h3> <%= "$#{@garment.price}" %> </h3>
         <p> <%= "#{@garment.category} - Size: #{@garment.size} - Color: #{@garment.colour} " %> </p>
         <br>
         <p> <%= @garment.address %> </p>
-      
+
       <div >
         <%= link_to "Back to all garments", garments_path, class: "btn btn-outline-success" %>
         <%= link_to "Delete garment", garment_path(@garment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger"%>
         <%= link_to "Book", new_garment_booking_path(@garment), class: "btn btn-primary"%>
       </div>
       <br>
-      
+
 
       </div>
     </div>
   </div>
+
+<div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+

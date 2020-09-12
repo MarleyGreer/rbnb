@@ -14,7 +14,7 @@ puts 'Creating 10 fake pieces of clothing....'
 @user = User.new(email: 'anurag.vashist@gmail.com', password: '123456')
 @user.save
 
-10.times do
+1.times do
     garment = Garment.new(
         name:   Faker::Vehicle.model,
         description: Faker::Movie.quote,
@@ -28,3 +28,5 @@ puts 'Creating 10 fake pieces of clothing....'
     garment.save!
 end
 puts 'finished'
+
+Garment.new(name: 'pant', description: 'blablba', price: 3, category: 'Dress', size: 6, colour: 'red', address: '16 Villa Gaudelet, Paris', user_id: 1)
