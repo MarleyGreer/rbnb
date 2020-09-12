@@ -7,13 +7,22 @@ class GarmentsController < ApplicationController
   def index
     if params[:category]
       garments = Garment.where(category = params[:category])
-    else     
+    else
     @garments = Garment.all
     end
+
+      @markers = @garments.geocoded.map do |garment|
+      {
+        lat: garment.latitude,
+        lng: garment.longitude
+      }
+    end
+
   end
 
   def show
     @garment = Garment.find(params[:id])
+
   end
 
   def new
@@ -47,6 +56,7 @@ class GarmentsController < ApplicationController
 
   def set_garment
     @garment = Garment.find(params[:id])
+
   end
 
   def garment_params
