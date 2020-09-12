@@ -29,6 +29,8 @@ before_action :set_booking, only: [:show, :edit, :update, :confirm, :decline, :c
   end
 
   def edit
+    garment_id = @booking.garment_id
+    @garment = Garment.find(garment_id)
   end
 
   def update

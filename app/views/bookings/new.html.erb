@@ -1,16 +1,19 @@
-<h1 class="header">MAKE A BOOKING </h1>
-<br><br>
-<div class="container w-50 mb-3">
-  <%= simple_form_for [@garment, @booking] do |f| %>
-    <div class="dates">
-      <%= f.input :start_date, as: :date, label: 'Start Date', html5: true, class: "start-date" %>
-      <%= f.input :end_date, as: :date, label: 'End Date', html5: true, class: "end-date" %>
-    </div>
-    <div class="total-price-display">
-      Price per day: $<span class="garment-price"><%= @garment.price %></span>
-      <br>Total price: $<span class="total-price"></span>
-    </div>
-    <br><br>
-    <%= f.button :submit, class: "btn-dark search-cocktails mb-3"%>
-  <% end %>
+<div class="form">
+  <h1 class="header">MAKE A BOOKING</h1>
+  <br><br>
+  <div class="container w-50 mb-3">
+    <%= simple_form_for [@garment, @booking] do |f| %>
+      <div class="dates">
+        <%= f.input :start_date, as: :date, label: 'Start Date', html5: true, class: "start-date" %>
+        <%= f.input :end_date, as: :date, label: 'End Date', html5: true, class: "end-date" %>
+      </div>
+      <div class="total-price-display">
+        Price per day: $<span class="garment-price"><%= @garment.price %></span>
+        <br>
+        <strong>Total price: $<span class="total-price"></span></strong>
+      </div>
+      <br><br>
+      <%= f.button :submit, class: "btn-dark search-cocktails mb-3"%>
+    <% end %>
+  </div>
 </div>
