@@ -1,11 +1,15 @@
-<%= simple_form_for(@garment) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :price, label: 'Price per day' %>
-  <%= f.input :category, :collection => ["Dress", "Top", "Knitwear", "Skirt", "Pant", "Jacket", "Denim", "Shoes", "Accessories"] %>
-  <%= f.input :size, :collection => [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] %>
-  <%= f.input :colour %>
-  <%= f.input :address %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.submit %>
-<% end %>
+<h1 class="header">ADD A GARMENT</h1>
+<br><br>
+<div class="container w-50 mb-3">
+  <%= simple_form_for(@garment) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :price, label: 'Price per day' %>
+    <%= f.input :category, :collection => ["Dress", "Top", "Knitwear", "Skirt", "Pant", "Jacket", "Denim", "Shoes", "Accessories"] %>
+    <%= f.input :size, :collection => [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] %>
+    <%= f.input :colour %>
+    <%= f.input :address %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.submit %>
+  <% end %>
+</div>
