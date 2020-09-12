@@ -27,8 +27,9 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { initTotalPriceDisplay } from '../components/init_total_price_display';
 
 document.addEventListener('turbolinks:load', () => {
-
+  initTotalPriceDisplay()
 });
 

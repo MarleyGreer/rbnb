@@ -3,10 +3,11 @@ class Booking < ApplicationRecord
   belongs_to :garment
   has_many :reviews, dependent: :destroy
 
-  validates :start_date, presence: true
-  validates :end_date, presence: true
+  validates :start_date, :end_date, presence: true, availability: true
   validates :status, inclusion: { in: ["pending", "accepted", "declined", "cancelled"] }
   validate :end_date_after_start_date
+
+  private
 
   def end_date_after_start_date
     return if end_date.blank? || start_date.blank?
