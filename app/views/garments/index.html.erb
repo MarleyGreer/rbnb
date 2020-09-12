@@ -5,7 +5,6 @@
     <div class="input-group-prepend">
       <label class="input-group-text"for="inputGroupSelect01">Category</label>
       <%= collection_select(:garment, :category, Garment.all.select("DISTINCT(CATEGORY)"), :category, :category, prompt: true, class: "custom-select" ) %>
-      <%# <%= link_to :category, '/garment?category=true'%> %>
     </div>
   </div>
   </li>
