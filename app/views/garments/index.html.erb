@@ -50,9 +50,9 @@
         <div class="card-body garmenttext">
           <div class="split" style="display:flex">
             <div style="width: 60%" class = "summarybox">
-              <h5 class='card-title detailstext' style="font-size: 24px; line-height: 28px; margin-bottom: 8px; border-bottom: 1px solid lightgrey"> <%= garment.name%> </h5>
+              <h5 class='card-title detailstext' style="font-size: 20px; line-height: 28px; margin-bottom: 8px; border-bottom: 1px solid lightgrey"> <%= garment.name%> </h5>
               <br>
-              <p class='card-text detailstext' style="font-size: 14px; line-height: 16px"> <%= garment.description %> </p>
+              <p class='card-text detailstext' style="overflow: hidden; white-space: nowrap; font-size: 14px; line-height: 16px"> <%= garment.description %> </p>
               <br>
               <a class='btn btn-outline-dark' style="font-family: 'Barlow Condensed'; width: 100%" href="<%= garment_path(garment)%>" style="width: 100%"> Book </a>
             </div>
