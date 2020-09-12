@@ -47,7 +47,7 @@
   <% @garments.each do |garment| %>
     <div class="garmentcard">
       <div class="card roundedcard">
-        <img class="card-img-top garmentimage" style="height: 0px; padding: 50%; width: 100%; background-image: url('<%= cl_image_path garment.photos[0].key, height: 300, width: 400, crop: :fill %>')">
+        <img class="card-img-top garmentimageindex" style="height: 0px; padding: 50%; width: 100%; background-image: url('<%= cl_image_path garment.photos[0].key, height: 300, width: 400, crop: :fill %>')">
         <div class="card-body garmenttext">
           <div class="split" style="display:flex">
             <div style="width: 60%" class = "summarybox">
