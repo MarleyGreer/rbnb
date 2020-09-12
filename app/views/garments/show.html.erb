@@ -2,28 +2,25 @@
   <ul class="nav filter-bar" style="margin-top: 50px;">
          <h1><%= @garment.name %></h1>
   </ul>
-
-  <div style="margin-top: 50px" >
-    <div class="container index">
-      <div style="width: 50%">
-      <img class="card-img-top" style="width: 90%; height: 500px; background-size: cover; background-image: url('<%= cl_image_path @garment.photos[0].key, height: 300, width: 400, crop: :fill %>')">
+  <div class="col-container">
+  <div style="margin-top: 24px" >
+    <div class="container index col">
+      <div style="width: 50%; padding: 16px">
+      <img class="garmentimage" style="background-image: url('<%= cl_image_path @garment.photos[0].key, height: 300, width: 400, crop: :fill %>')">
       </div>
-      <div style="width: 50%; height: 500px; display: flex; flex-direction: column; justify-content: space-between">
-   
+      <div class="col" style="width: 50%; padding: 48px 16px; height: auto; display: flex; flex-direction: column; justify-content: space-between"> 
         <p> <%= @garment.description %> </p>
-        <br>
         <h3> <%= "$#{@garment.price}" %> </h3>
         <p> <%= "#{@garment.category} - Size: #{@garment.size} - Color: #{@garment.colour} " %> </p>
-        <br>
         <p> <%= @garment.address %> </p>
-      
-      <div >
-        <%= link_to "Back to all garments", garments_path, class: "btn btn-outline-success" %>
-        <%= link_to "Delete garment", garment_path(@garment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger"%>
-        <%= link_to "Book", new_garment_booking_path(@garment), class: "btn btn-primary"%>
+        <div>
+        <%= link_to "Back to all garments", garments_path, class: "btn btn-outline-dark" %>
+        <%= link_to "Delete garment", garment_path(@garment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-dark"%>
+        <%= link_to "Book", new_garment_booking_path(@garment), class: "btn btn-dark"%>
+        </div>
       </div>
       <br>
-      
+  </div>    
 
       </div>
     </div>

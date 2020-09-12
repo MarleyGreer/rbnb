@@ -1,0 +1,21 @@
+p, h3, h1 {
+    font-family: 'Barlow Condensed';
+    margin: 0px;
+    padding: 0px;
+}
+
+.garmentimage {
+    display: block;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    border-radius: 32px;
+    background-size: cover;
+    padding: 50%;
+    height: auto;
+}
+
+.col-container {
+    display: table;
+    width: 100%
+}

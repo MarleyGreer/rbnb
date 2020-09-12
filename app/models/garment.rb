@@ -11,4 +11,8 @@ class Garment < ApplicationRecord
   has_many :reviews, through: :bookings
   has_many_attached :photos, dependent: :destroy
 
+  scope :filter_by_category, -> (category) { where category: category }
+  scope :filter_by_price, -> (price) { where price: price }
+
+
 end
