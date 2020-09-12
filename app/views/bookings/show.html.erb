@@ -16,7 +16,7 @@
            <h3>Start Date:</h3>
            <%= @booking.start_date.strftime("%e %m %Y") %><br>
           <h3>End Date</h3>
-          End Date: <%= @booking.end_date.strftime("%e %m %Y") %><br>
+           <%= @booking.end_date.strftime("%e %m %Y") %><br>
           <h3>Total Price ($)</h3>
            <%= @booking.total_price %><br>
              <%= link_to "View Details", garment_path(@booking.garment), class: "btn btn-outline-success" %>
