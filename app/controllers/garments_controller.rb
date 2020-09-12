@@ -11,12 +11,12 @@ class GarmentsController < ApplicationController
     @garments = Garment.all
     end
 
-      @markers = @garments.geocoded.map do |garment|
-      {
-        lat: garment.latitude,
-        lng: garment.longitude
-      }
-    end
+    #   @markers = @garments.geocoded.map do |garment|
+    #   {
+    #     lat: garment.latitude,
+    #     lng: garment.longitude
+    #   }
+    # end
 
   end
 
