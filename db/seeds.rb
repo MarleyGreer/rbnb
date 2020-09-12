@@ -12,8 +12,8 @@ category = ['Dress', 'Top', 'Knitwear', 'Skirt', 'Pant', 'Jacket', 'Denim', 'Sho
 
 puts 'Adding clothing to database....'
 
-user = User.create!(email: 'anurag.vashist@gmail.com', password: '123456')
-user_id = user.id
+# user = User.create!(email: 'anurag.vashist@gmail.com', password: '123456')
+# user_id = user.id
 
 3.times do
 
@@ -25,7 +25,7 @@ user_id = user.id
         size: Garment::VALID_SIZES.sample,
         colour: Faker::Color.color_name,
         address: Faker::Address.full_address,
-        user_id: user_id
+        user: User.first
     )
 
     file = File.open('db/support/images/shirt.jpg')
@@ -44,7 +44,7 @@ end
         size: Garment::VALID_SIZES.sample,
         colour: Faker::Color.color_name,
         address: Faker::Address.full_address,
-        user_id: user_id
+        user: User.last
     )
 
     file = File.open('db/support/images/t-shirt.jpg')
@@ -63,7 +63,7 @@ end
         size: Garment::VALID_SIZES.sample,
         colour: Faker::Color.color_name,
         address: Faker::Address.full_address,
-        user_id: user_id
+        user: User.first
     )
 
     file = File.open('db/support/images/lady.jpg')
