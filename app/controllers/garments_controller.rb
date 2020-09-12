@@ -6,10 +6,10 @@ class GarmentsController < ApplicationController
 
   def index
 
+
     @garments = Garment.where(nil) # creates an anonymous scope
     @garments = @garments.filter_by_category(params[:category]) if params[:category].present?
     @garments = @garments.filter_by_location(params[:price]) if params[:price].present?
-
 
     #   @markers = @garments.geocoded.map do |garment|
     #   {

@@ -9,24 +9,67 @@
 require 'faker'
 
 category = ['Dress', 'Top', 'Knitwear', 'Skirt', 'Pant', 'Jacket', 'Denim', 'Shoes', 'Accessories']
-puts 'Creating 10 fake pieces of clothing....'
 
-@user = User.new(email: 'anurag.vashist@gmail.com', password: '123456')
-@user.save
+puts 'Adding clothing to database....'
 
-1.times do
+user = User.create!(email: 'anurag.vashist@gmail.com', password: '123456')
+user_id = user.id
+
+3.times do
+
     garment = Garment.new(
-        name:   Faker::Vehicle.model,
-        description: Faker::Movie.quote,
-        price: Faker::Number.number(digits: 3),
+        name: "Georgina Cassia Shirt",
+        description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false),
+        price: Faker::Number.number(digits: 2),
         category: category.sample,
-        size: [2,4,6,8,10,12,14].sample,
+        size: Garment::VALID_SIZES.sample,
         colour: Faker::Color.color_name,
-        address: Faker::Address.city,
-        user_id: 1
+        address: Faker::Address.full_address,
+        user_id: user_id
     )
+
+    file = File.open('db/support/images/shirt.jpg')
+    garment.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+
     garment.save!
 end
-puts 'finished'
 
-Garment.new(name: 'pant', description: 'blablba', price: 3, category: 'Dress', size: 6, colour: 'red', address: '16 Villa Gaudelet, Paris', user_id: 1)
+3.times do
+
+    garment = Garment.new(
+        name: "Palmer Linen Tee",
+        description: Faker::Lorem.paragraph_by_chars(number: 200, supplemental: false),
+        price: Faker::Number.number(digits: 2),
+        category: category.sample,
+        size: Garment::VALID_SIZES.sample,
+        colour: Faker::Color.color_name,
+        address: Faker::Address.full_address,
+        user_id: user_id
+    )
+
+    file = File.open('db/support/images/t-shirt.jpg')
+    garment.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+
+    garment.save!
+end
+
+3.times do
+
+    garment = Garment.new(
+        name: "Sofia Silk Shirt",
+        description: Faker::Lorem.paragraph_by_chars(number: 200, supplemental: false),
+        price: Faker::Number.number(digits: 2),
+        category: category.sample,
+        size: Garment::VALID_SIZES.sample,
+        colour: Faker::Color.color_name,
+        address: Faker::Address.full_address,
+        user_id: user_id
+    )
+
+    file = File.open('db/support/images/lady.jpg')
+    garment.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+
+    garment.save!
+end
+
+
