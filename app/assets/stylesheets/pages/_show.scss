@@ -1,10 +1,51 @@
-  h3 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 24px;
-  }
-
-    h2 {
+ h2 {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 32px;
   }
+
+h3 {
+    font-family: 'Barlow Condensed';
+    font-size: 18px;
+    margin: 0px;
+    padding: 8px;
+}
+
+h1 {
+    font-family: 'Barlow Condensed';
+}
+
+
+.garmentimage {
+    display: block;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    border-radius: 8px 0px 0px 8px;
+    background-size: cover;
+    padding: 50%;
+    height: auto;
+}
+
+.col-container {
+    display: table;
+    width: 100%
+}
+
+.detailsboxshow {
+    background-color: rgba(1,1,1,.05);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 48px;
+}
+
+.showcard {
+    background-color: white;
+    width: 100%;
+    display: flex;
+    padding: 0px;
+    border-radius: 8px;
+}
 

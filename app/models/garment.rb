@@ -11,10 +11,16 @@ class Garment < ApplicationRecord
   validates :colour, presence: true
   validates :address, presence: true
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :reviews, through: :bookings
   has_many_attached :photos, dependent: :destroy
   # geocoded_by :address
   # after_validation :geocode, if: :will_save_change_to_address?
+
+
+  scope :filter_by_category, -> (category) { where category: category }
+  scope :filter_by_price, -> (price) { where price: price }
+
+
 
 end

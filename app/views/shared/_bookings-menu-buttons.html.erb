@@ -1,31 +1,31 @@
 <div class="btn-group" role="group" aria-label="Basic example">
 
   <% if action_name == "all" %>
-  <%= link_to "All Bookings", all_bookings_path, class: "btn btn-dark" %>
+  <%= link_to "All Bookings", all_bookings_path, class: "btn btn-dark bold-font" %>
   <% else %>
-  <%= link_to "All Bookings", all_bookings_path, class: "btn btn-secondary" %>
+  <%= link_to "All Bookings", all_bookings_path, class: "btn btn-secondary bold-font" %>
   <% end %>
 
   <% if action_name == "pending" %>
-  <%= link_to "Pending Bookings", pending_bookings_path, class: "btn btn-dark" %>
+  <%= link_to "Pending Bookings", pending_bookings_path, class: "btn btn-dark bold-font" %>
   <% else %>
-  <%= link_to "Pending Bookings", pending_bookings_path, class: "btn btn-secondary" %>
+  <%= link_to "Pending Bookings", pending_bookings_path, class: "btn btn-secondary bold-font" %>
   <% end %>
   <% if action_name == "confirmed" %>
-  <%= link_to "Confirmed Bookings", confirmed_bookings_path, class: "btn btn-dark" %>
+  <%= link_to "Confirmed Bookings", confirmed_bookings_path, class: "btn btn-dark bold-font" %>
   <% else %>
-  <%= link_to "Confirmed Bookings", confirmed_bookings_path, class: "btn btn-secondary" %>
+  <%= link_to "Confirmed Bookings", confirmed_bookings_path, class: "btn btn-secondary bold-font" %>
   <% end %>
 
   <% if action_name == "declined" %>
-  <%= link_to "Declined Bookings", declined_bookings_path, class: "btn btn-dark" %>
+  <%= link_to "Declined Bookings", declined_bookings_path, class: "btn btn-dark bold-font" %>
   <% else %>
-  <%= link_to "Declined Bookings", declined_bookings_path, class: "btn btn-secondary" %>
+  <%= link_to "Declined Bookings", declined_bookings_path, class: "btn btn-secondary bold-font" %>
   <% end %>
 
   <% if action_name == "cancelled" %>
-  <%= link_to "Cancelled Bookings", cancelled_bookings_path, class: "btn btn-dark" %>
+  <%= link_to "Cancelled Bookings", cancelled_bookings_path, class: "btn btn-dark bold-font" %>
   <% else %>
-  <%= link_to "Cancelled Bookings", cancelled_bookings_path, class: "btn btn-secondary" %>
+  <%= link_to "Cancelled Bookings", cancelled_bookings_path, class: "btn btn-secondary bold-font" %>
   <% end %>
 </div>

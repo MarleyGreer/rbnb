@@ -1,6 +1,7 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "show";
+@import "all";
 
 .filter-bar {
     margin-top: 20px;
@@ -13,6 +14,12 @@
 
 }
 
+.indexcontainer {
+    padding-left: 64px;
+    padding-right: 64px;
+    max-width: 100%;
+}
+
 .garmentcard {
     display: inline-block;
     vertical-align: top;
@@ -21,6 +28,10 @@
     background-color: transparent;
     border: none;
     margin-bottom: 16px;
+    width: 20%;
+    min-width: 300px;
+    max-width: 400px;
+    flex-grow: 1;
 }
 
 .index {
@@ -31,14 +42,44 @@
     height: 75%
 }
 
-.garmentimage {
-    border-radius: 8px;
+.garmentimageindex {
     display: block;
     width: 100%;
     left: 0px;
     top: 0px;
+    border-radius: 16px 16px 0px 0px;
+    background-size: cover;
 }
 
 .garmenttext {
+    padding: 16px;
+}
+
+.roundedcard {
+    border-radius: 16px;
+}
+
+.detailsbox {
+    background-color: rgba(1,1,1,.05);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.summarybox {
     padding: 8px;
+}
+
+.detailstext {
+    font-family: 'Barlow Condensed';
+    font-weight: 200;
+    font-size: 12px; 
+    line-height: 18px; 
+    align-items: center; 
+    width: 100%; 
+    margin: 0px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
