@@ -1,15 +1,23 @@
-<h1>Pending </h1>
+
   <%= render "./shared/bookings-menu-buttons.html.erb" %>
+  <h1 class="header">PENDING BOOKINGS </h1>
+<div class="booking-cards container">
   <% @bookings.each do |booking| %>
-  <%= cl_image_tag booking.garment.photos[0].key, height: 300, width: 400%><br>
-  <%= booking.status.capitalize %><br>
-  <%= booking.garment.name%><br>
-  <%= booking.start_date.strftime("%e %m %Y") %><br>
-  <%= booking.end_date.strftime("%e %m %Y") %><br>
-  <%= booking.total_price %><br>
-  <%= link_to "View Details", garment_path(booking.garment)  %><br><br>
-  <%= link_to "Confirm Booking", confirm_booking_path(booking), method: :patch, class: "btn btn-dark" %>
-  <%= link_to "Declined Booking", decline_booking_path(booking), method: :patch, class: "btn btn-dark" %>
-  <%= link_to "Cancel Booking", cancel_booking_path(booking), method: :patch, class: "btn btn-dark" %>
-  <br>
+  <div class="booking-card">
+  <%= cl_image_tag booking.garment.photos[0].key, height: 300, width: 400, class: "card-image" %>
+  <h3><%= booking.garment.name%></h3>
+  <h4>Booking Status: </h4> <p><%= booking.status.capitalize %></p><br>
+  <h4>Hire Start Date: </h4>
+  <p><%= booking.start_date.strftime("%e %m %Y") %></p><br>
+  <h4>Hire End Date: </h4>
+  <p><%= booking.end_date.strftime("%e %m %Y") %></p><br>
+  <h4>Total Price: </h4><p>$<%= booking.total_price %></p><br>
+  <%= link_to "View Details", garment_path(booking.garment), class: "card-link" %>
+  <div class="buttons">
+  <%= link_to "Confirm", confirm_booking_path(booking), method: :patch, class: "btn btn-dark m-1 bold-font" %>
+  <%= link_to "Declined", decline_booking_path(booking), method: :patch, class: "btn btn-dark m-1 bold-font" %>
+  <%= link_to "Cancel", cancel_booking_path(booking), method: :patch, class: "btn btn-dark m-1 bold-font" %>
+</div>
+  </div>
   <% end %>
+</div>
