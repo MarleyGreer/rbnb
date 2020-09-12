@@ -7,7 +7,7 @@ class Garment < ApplicationRecord
   validates :colour, presence: true
   validates :address, presence: true
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :reviews, through: :bookings
   has_many_attached :photos, dependent: :destroy
 
