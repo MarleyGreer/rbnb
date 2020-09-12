@@ -1,10 +1,11 @@
-<div class="container">
+<div class="container indexcontainer">
   <ul class="nav filter-bar">
   <li class="nav-item filterselect">
   <div class="input-group mb-3">
     <div class="input-group-prepend">
       <label class="input-group-text"for="inputGroupSelect01">Category</label>
       <%= collection_select(:garment, :category, Garment.all.select("DISTINCT(CATEGORY)"), :category, :category, prompt: true, class: "custom-select" ) %>
+      <%# <%= link_to :category, '/garment?category=true'%> %>
     </div>
   </div>
   </li>
@@ -42,26 +43,30 @@
 
 </div>
 
-<div class="container index">
+<div class="container indexcontainer index">
   <% @garments.each do |garment| %>
-    <div class="card garmentcard" style="width: 25%">
-    <img class="card-img-top garmentimage" style="height: 0px; padding: 50%; width: 100%; background-image: url('<%= cl_image_path garment.photos[0].key, height: 300, width: 400, crop: :fill %>')">
-      <div class="card-body garmenttext">
-      <div>
-        <p style="font-size: 14px; line-height: 18px; align-items: center; display: flex; width: 100%"> <%= "#{garment.category} - Size: #{garment.size} - Color: #{garment.colour}" %> </p>
-      </div>
-      <div>
-        <h5 class='card-title' style="font-size: 16px; line-height: 20px"> <%= link_to garment.name, garment_path(garment) %> </h5>
-      </div>
-      <div>
-        <p class='card-text' style="font-size: 14px; line-height: 16px"> <%= garment.description %> </p>
-      </div>
-      <div>
-
-      </div>
-      <div>
-        <p> <%= "$#{garment.price}" %> </p>
-      </div>
+    <div class="garmentcard">
+      <div class="card roundedcard">
+        <img class="card-img-top garmentimageindex" style="height: 0px; padding: 50%; width: 100%; background-image: url('<%= cl_image_path garment.photos[0].key, height: 300, width: 400, crop: :fill %>')">
+        <div class="card-body garmenttext">
+          <div class="split" style="display:flex">
+            <div style="width: 60%" class = "summarybox">
+              <h5 class='card-title detailstext' style="font-size: 24px; line-height: 28px; margin-bottom: 8px; border-bottom: 1px solid lightgrey"> <%= garment.name%> </h5>
+              <br>
+              <p class='card-text detailstext' style="font-size: 14px; line-height: 16px"> <%= garment.description %> </p>
+              <br>
+              <a class='btn btn-outline-dark' style="font-family: 'Barlow Condensed'; width: 100%" href="<%= garment_path(garment)%>" style="width: 100%"> Book </a>
+            </div>
+            <div style="width:40%" class="detailsbox">
+              <p class="detailstext" style="color: red; border-radius: 8px; border-width: 1px; transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s; border-color: rgb(34, 34, 34) !important; background: rgb(255, 255, 255) !important; color: rgb(34, 34, 34) !important; border-style: solid; padding: 8px 8px; margin-bottom: 8px; font-size: 20px; line-height: 24px; background-color: white; border: .5px solid black"> <%= "$#{garment.price} per day" %> </p>
+              <div style="display: flex; flex-direction: column; justify-content: space-evenly">
+              <p class="detailstext" > <%= "#{garment.category}" %> </p>
+              <p class="detailstext"> <%= "Size: #{garment.size}" %> </p>
+              <p class="detailstext"> <%= "Color: #{garment.colour}" %> </p>  
+              </div>      
+            </div>  
+          </div>
+        </div>
       </div>
     </div>
   <% end %>

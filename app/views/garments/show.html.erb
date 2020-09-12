@@ -2,31 +2,37 @@
   <ul class="nav filter-bar" style="margin-top: 50px;">
          <h1><%= @garment.name %></h1>
   </ul>
-
-  <div style="margin-top: 50px" >
-    <div class="container index">
-      <div style="width: 50%">
-      <img class="card-img-top" style="width: 90%; height: 500px; background-size: cover; background-image: url('<%= cl_image_path @garment.photos[0].key, height: 300, width: 400, crop: :fill %>')">
+  <div class="col-container">
+  <div style="margin-top: 24px" >
+    <div class="container index col">
+      <div class="showcard">
+        <div style="width: 50%; padding: 0px; padding-right: 8px">
+        <img class="garmentimage" style="background-image: url('<%= cl_image_path @garment.photos[0].key, height: 300, width: 400, crop: :fill %>')">
+          </div>
+            <div class="col" style="width: 50%; padding: 0px 8px; height: auto; display: flex; flex-direction: column; justify-content: space-between"> 
+              <div class="detailsboxshow">
+                <p class="detailstext" style="color: red; border-radius: 8px; border-width: 1px; transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s; border-color: rgb(34, 34, 34) !important; background: rgb(255, 255, 255) !important; color: rgb(34, 34, 34) !important; border-style: solid; padding: 8px 8px; margin-bottom: 8px; font-size: 20px; line-height: 24px; background-color: white; border: .5px solid black"> <%= "$#{@garment.price} per day" %> </p>
+                <div>
+                <h3> Description </h3>
+                <p> <%= @garment.description %> </p>
+                </div>
+                <div>
+                <h3> Details </h3>
+                <p> <%= "#{@garment.category} - Size: #{@garment.size} - Color: #{@garment.colour} " %> </p>
+                </div>
+              </div>
+              
+              <div style="margin-bottom: 32px; padding: 0px 16px; width: 100%; display: flex; justify-content: space-evenly">
+                <div>
+                  <%= link_to "Back to all garments", garments_path, class: "btn btn-outline-dark" %>
+                  <%= link_to "Delete garment", garment_path(@garment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-dark"%>
+                </div>
+                <%= link_to "Book", new_garment_booking_path(@garment), class: "btn btn-dark", style: "width: 25%" %>
+              </div>
+            </div>  
+          </div>
+        </div>
       </div>
-      <div style="width: 50%; height: 500px; display: flex; flex-direction: column; justify-content: space-between">
-
-        <p> <%= @garment.description %> </p>
-        <br>
-        <h3> <%= "$#{@garment.price}" %> </h3>
-        <p> <%= "#{@garment.category} - Size: #{@garment.size} - Color: #{@garment.colour} " %> </p>
-        <br>
-        <p> <%= @garment.address %> </p>
-
-      <div >
-        <%= link_to "Back to all garments", garments_path, class: "btn btn-outline-success" %>
-        <%= link_to "Delete garment", garment_path(@garment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger"%>
-        <%= link_to "Book", new_garment_booking_path(@garment), class: "btn btn-primary"%>
-      </div>
-      <br>
-
-
-      </div>
-    </div>
   </div>
 
 <div id="map"
