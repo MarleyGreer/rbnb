@@ -1,0 +1,25 @@
+<%= render "./shared/bookings-menu-buttons.html.erb" %>
+<h1 class="header">MY GARMENTS</h1>
+
+<div class="container indexcontainer index">
+  <% @garments.each do |garment| %>
+    <div class="garmentcard">
+      <div class="card booking-card">
+        <img class="card-img-top garmentimageindex" style="height: 0px; padding: 50%; width: 100%; background-image: url('<%= cl_image_path garment.photos[0].key, height: 300, width: 400, crop: :fill %>')">
+        <div class="card-body garmenttext">
+          <div class="split" style="display:flex">
+            <div style="width: 100%" class = "summarybox">
+              <h5 class='card-title detailstext' style="font-size: 24px; line-height: 28px; margin-bottom: 8px; border-bottom: 1px solid lightgrey"> <%= garment.name%> </h5>
+              <h5 class='detailstext' style="font-size: 20px; line-height: 28px; margin-bottom: 8px;"> $<%= garment.price %> per day</h5>
+              <p class="card-text detailstext"> Size: <%=  garment.size %> </p>
+              <p class='card-text detailstext'> Colour: <%= garment.colour %> </p>
+              <p class="card-text detailstext"> Category: <%= garment.category %> </p>
+              <br>
+              <a class='btn btn-dark' style="font-family: 'Barlow Condensed'; width: 100%" href="<%= garment_path(garment)%>" style="width: 100%"> Manage Listing  </a><br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>
