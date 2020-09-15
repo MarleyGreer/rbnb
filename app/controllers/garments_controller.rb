@@ -9,7 +9,8 @@ class GarmentsController < ApplicationController
 
     @garments = Garment.where(nil) # creates an anonymous scope
     @garments = @garments.filter_by_category(params[:category]) if params[:category].present?
-    @garments = @garments.filter_by_location(params[:price]) if params[:price].present?
+    @garments = @garments.filter_by_price(params[:price]) if params[:price].present?
+    @garments = @garments.filter_by_size(params[:size]) if params[:size].present?
 
     #   @markers = @garments.geocoded.map do |garment|
     #   {
@@ -22,7 +23,11 @@ class GarmentsController < ApplicationController
 
   def show
     @garment = Garment.find(params[:id])
-
+    if @garment.user = current_user 
+      @userowner = true
+    else
+      @userowner = false
+    end
   end
 
   def new
