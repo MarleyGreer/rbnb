@@ -21,6 +21,10 @@ class GarmentsController < ApplicationController
 
   end
 
+  def all
+    @garments = Garment.where(user: current_user)
+  end
+
   def show
     @garment = Garment.find(params[:id])
     if @garment.user == current_user
@@ -56,6 +60,7 @@ class GarmentsController < ApplicationController
     @garment.destroy
     redirect_to garments_path
   end
+
 
   private
 
