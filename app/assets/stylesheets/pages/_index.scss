@@ -46,17 +46,29 @@
     display: block;
     width: 100%;
     left: 0px;
-    top: 0px;
-    border-radius: 16px 16px 0px 0px;
     background-size: cover;
+    background-position: center;
+    border-bottom: 2px solid darkgrey
 }
 
 .garmenttext {
     padding: 16px;
+    border-top: none;
 }
 
 .roundedcard {
     border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 3px 3px 5px 6px rgba(1,1,1,.04);
+    margin-top: 2px;
+    z-index: 100;
+    background-color: transparent;
+}
+
+.roundedcard:hover {
+    border: 4px solid darkgrey;
+    background-color: rgba(1,1,1,.1);
+    cursor: pointer;
 }
 
 .detailsbox {
@@ -82,4 +94,8 @@
     margin: 0px;
     padding-left: 8px;
     padding-right: 8px;
+}
+
+.selectbutton {
+    margin-left: 8px;
 }

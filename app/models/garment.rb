@@ -20,6 +20,7 @@ class Garment < ApplicationRecord
 
   scope :filter_by_category, -> (category) { where category: category }
   scope :filter_by_price, -> (price) { where price: price }
+  scope :filter_by_size, -> (size) { where size: size }
 
 
 
