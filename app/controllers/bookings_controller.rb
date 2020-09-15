@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
 before_action :set_booking, only: [:show, :edit, :update, :confirm, :decline, :cancel]
 
   def index
-    @bookings = Booking.where("user = current_user")
+    @bookings = Booking.where(user: current_user)
   end
 
   def show
@@ -24,7 +24,7 @@ before_action :set_booking, only: [:show, :edit, :update, :confirm, :decline, :c
     if @booking.save
       redirect_to booking_path(@booking)
     else
-      render :new
+      redirect_to new_user_session_path
     end
   end
 
