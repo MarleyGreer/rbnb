@@ -11,31 +11,32 @@ p  {
 h3 {
     font-family: 'Barlow Condensed';
     font-size: 18px;
-    margin: 0px;
     padding: 8px 0px;
-    margin: 0px;
 }
 
 h1 {
     font-family: 'Barlow Condensed';
     font-weight: 700;
-    margin: 0px;
-
 }
 
 h3 {
     font-family: 'Barlow Condensed';
     font-weight: 600;
-    margin: 0px;
 }
 
+a {
+    font-family: 'Barlow Condensed';
+    font-size: 18px;
+    font-color: black;
+    margin: 0px;
+}
 
 .garmentimage {
     display: block;
     width: 100%;
     left: 0px;
     top: 0px;
-    border-radius: 8px 0px 0px 8px;
+    border-radius: 8px 8px 8px 8px;
     background-size: cover;
     background-position: center;
     padding: 50%;

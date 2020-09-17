@@ -27,7 +27,7 @@ class GarmentsController < ApplicationController
 
   def show
     @garment = Garment.find(params[:id])
-    if @garment.user = current_user
+    if @garment.user == current_user
       @userowner = true
     else
       @userowner = false

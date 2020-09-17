@@ -1,48 +1,41 @@
 <div class="container">
-  <ul class="nav filter-bar" style="margin-top: 50px;">
-         <h1><%= @garment.name %></h1>
-  </ul>
   <div class="col-container">
-  <div style="margin-top: 24px" >
-    <div class="container index col">
-      <div class="showcard">
-        <div style="width: 60%; padding: 0px; padding-right: 8px; margin-bottom: 24px">
-        <img class="garmentimage" style="background-image: url('<%= cl_image_path @garment.photos[0].key, height: 300, width: 400, crop: :fill %>')">
-        </div>
-        <div class="col boxshade" style="width: 40%; padding: 0px 8px; margin-bottom: 24px; height: auto; display: flex; flex-direction: column; justify-content: space-between"> 
-          <div class="detailsboxshow" style="height: 100%">
-            <p class="detailstext" style="color: red; border-radius: 8px; border-width: 1px; transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s; border-color: rgb(34, 34, 34) !important; background: rgb(255, 255, 255) !important; color: rgb(34, 34, 34) !important; border-style: solid; padding: 8px 8px; font-weight: 600; margin-bottom: 8px; font-size: 32px; line-height: 40px; background-color: white; border: .5px solid black"> <%= "$#{@garment.price} per day" %> </p>
-            <div>
-                <h3> Description </h3>
-                <p> <%= @garment.description %> </p>
+    <div style="margin-top: 24px" >
+      <div class="container index col">
+        <%= link_to "<< All garments", garments_path %>
+        <br>
+        <div class="showcard">
+          <div style="width: 60%; padding: 0px; padding-right: 8px; margin-bottom: 24px">
+            <img class="garmentimage" style="background-image: url('<%= cl_image_path @garment.photos[0].key, crop: :fill %>')">
+          </div>
+          <div class="col boxshade" style="width: 40%; padding: 0px 8px; margin-bottom: 24px; height: auto; display: flex; flex-direction: column; justify-content: space-between">
+            <div class="detailsboxshow" style="height: 100%">
+              <h1><%= @garment.name %></h1>
+              <h2><%= "$#{@garment.price} per day" %></h2>
+              <h3>Description</h3>
+              <p><%= @garment.description %></p>
+              <h3>Colour </h3>
+              <p><%= @garment.colour %></p>
+              <h3>Size </h3>
+              <p><%= @garment.size %></p>
             </div>
-            <div>
-              <h3> Details </h3>
-              <p> <%= "#{@garment.category} - Size: #{@garment.size} - Color: #{@garment.colour} " %> </p>
-            </div>
-          </div>  
-
-          <div style="padding-top: 8px; border-top: 1px solid grey; "> 
-            <div style="margin-bottom: 16px; padding: 0px 0px; width: 100%">
-              <% if @userowner == true then %>
-              <%= link_to "Edit garment", edit_garment_path(@garment), method: :get, data: { confirm: "Are you sure?" }, class: "btn btn-outline-success showbutton"%>   
-              <%= link_to "Delete garment", garment_path(@garment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger showbutton"%>
+            <div style="margin-bottom: 16px; padding: 0px 0px; width: 100%; text-align: center">
+              <% if @userowner then %>
+                <%= link_to "Edit garment", edit_garment_path(@garment), class: "btn btn-outline-dark m-1 light-font", style: "width: 90%" %>
+                <%= link_to "Delete garment", garment_path(@garment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-dark m-1 light-font", style: "width: 90%" %>
+              <% else %>
+                <%= link_to "Book", new_garment_booking_path(@garment), class: "btn btn-dark showbutton" %>
               <% end %>
-              <%= link_to "Back to all garments", garments_path, class: "btn btn-outline-dark showbutton" %>
-              <%= link_to "Book", new_garment_booking_path(@garment), class: "btn btn-dark showbutton" %>
             </div>
-          </div>  
-          
+          </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
+</div>
 <!--
 <div id="map"
      style="width: 100%; height: 600px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div> -->
-
-
