@@ -1,28 +1,7 @@
 <div class="container indexcontainer">
   <ul class="nav filter-bar">
-  <li class="nav-item filterselect">
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <label class="input-group-text"for="inputGroupSelect01">Category</label>
-      <%= collection_select(:garment, :category, Garment.all.select("DISTINCT(CATEGORY)"), :category, :category, {prompt: true}, html_options = {class: "custom-select", id: "GarmentSelector" }) %>
-    </div>
-  </div>
-  </li>
-  <li class="nav-item filterselect">
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Price</label>
-    <select class="custom-select" id="input-price">
-      <option selected>Choose...</option>
-      <option value="1">$0 - $50</option>
-      <option value="2">$50 - $100</option>
-      <option value="3">$100 - $200</option>
-      <option value="4">$200+</option>
-    </select>
-    </div>
-  </div>
-  </li>
-    <% if @garments.count > 10 %>
+    <div>  
+      <% if @garments.count > 10 %>
       <ul class="pagination filterselect">
       <li class="page-item disabled">
         <span class="page-link">Previous</span>
@@ -37,10 +16,29 @@
       </li>
       </ul>
     <% end %>
-  <li class= "filterselect">
-    <%= link_to "Show all garments", garments_path, class: "btn btn-outline-dark selectbutton" %>
-  </li>
-</ul>
+    </div>
+    <div style="display: flex">
+      <li class="nav-item filterselect">
+      <div class="input-group mb-3">
+        <%= form_tag garments_path, method: :get do%>
+        <div class="input-group-prepend" style="display: flex">          
+            <label class="input-group-text"for="inputGroupSelect01">Category</label>
+            <%= collection_select(:garment, :category, @garments.select("DISTINCT(CATEGORY)").order(:category), :category, :category, @categoryselection, html_options = {class: "custom-select", id: "GarmentSelector", onchange: "this.form.submit()"}) %>
+            <label class="input-group-text"for="inputGroupSelect01">Size</label>
+            <%= collection_select(:garment, :size, @garments.select("DISTINCT(SIZE)").order(:size), :size, :size, @sizeselection, html_options = {class: "custom-select", id: "GarmentSelector", onchange: "this.form.submit()"}) %>
+            <label class="input-group-text"for="inputGroupSelect01">Colour</label>
+            <%= collection_select(:garment, :colour, @garments.select("DISTINCT(COLOUR)").order(:colour), :colour, :colour, @colourselection, html_options = {class: "custom-select", id: "ColourSelector", onchange: "this.form.submit()"}) %>
+            <label class="input-group-text" for="inputGroupSelect01">Price</label>
+            <%= select_tag(:pricequery, options_for_select(@priceoptions, @priceselection), html_options = {class: "form-control mr-1 custom-select", onchange: "this.form.submit()"}) %>
+        </div>
+        <% end %>
+      </div>
+      </li>
+      <li class= "filterselect">
+        <%= link_to "Clear Filters", garments_path, class: "btn btn-outline-dark selectbutton" %>
+      </li>
+    </div>
+  </ul>
 
 </div>
 

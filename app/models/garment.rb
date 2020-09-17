@@ -23,5 +23,4 @@ class Garment < ApplicationRecord
   scope :filter_by_size, -> (size) { where size: size }
 
 
-
 end
