@@ -5,14 +5,18 @@
       <div class="container index col">
         <%= link_to "<< All garments", garments_path %>
         <br>
+        <div style="height: 77vh; padding: 16px 0px">
         <div class="showcard">
-          <div class="col boxshade" style="width: 50%; padding: 0px 8px; margin-bottom: 24px; height: auto; display: flex; flex-direction: column; justify-content: space-between">
-            <div class="detailsboxshow" style="height: 100%">
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
-                <% @garment.photos.each do |photo| %>
-                  <div class="carousel-item" style="display:flex">
-                      <img class="d-block w-100" src="<%= cl_image_path photo.key, crop: :fill %>" alt="...">
+          <div class="col boxshade" style="width: 50%; padding: 2% 2%; height: 100%; display: flex; flex-direction: column; justify-content: space-between">
+            <div class="detailsboxshow" style="height: 100%; box-sizing: border-box; padding: 0px 0px">
+            <div id="carouselExampleControls" class="carousel slide" style="height: 100%" data-ride="carousel">
+              <div class="carousel-inner" style="height: 100%">
+                <div class="carousel-item active">
+                  <img class="d-block w-100" src="<%= cl_image_path @garment.photos[0].key, crop: :fill %>" alt="...">
+                </div>
+                <% @garment.photos.drop(1).each do |photo| %>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="<%= cl_image_path photo.key, crop: :fill %>" alt="...">
                   </div>
                 <%end%>
               </div>
@@ -27,8 +31,8 @@
             </div>
             </div>
           </div>
-          <div class="col boxshade" style="width: 50%; padding: 0px 8px; margin-bottom: 24px; height: auto; display: flex; flex-direction: column; justify-content: space-between">
-            <div class="detailsboxshow" style="height: 100%">
+          <div class="col boxshade" style="width: 50%; padding: 2% 2%; height: 100%; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden">
+            <div class="detailsboxshow" style="height: 100%; box-sizing: border-box; padding: 0px 0px; overflow: auto">
               <h1><%= @garment.name %></h1>
               <h2><%= "$#{@garment.price} per day" %></h2>
               <h3>Description</h3>
@@ -36,17 +40,18 @@
               <h3>Colour </h3>
               <p><%= @garment.colour %></p>
               <h3>Size </h3>
-              <p><%= @garment.size %></p>
-            </div>
-            <div style="margin-bottom: 16px; padding: 0px 0px; width: 100%; text-align: center">
-              <% if @userowner then %>
-                <%= link_to "Edit garment", edit_garment_path(@garment), class: "btn btn-outline-dark m-1 light-font", style: "width: 90%" %>
-                <%= link_to "Delete garment", garment_path(@garment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-dark m-1 light-font", style: "width: 90%" %>
-              <% else %>
-                <%= link_to "Book", new_garment_booking_path(@garment), class: "btn btn-dark showbutton" %>
-              <% end %>
+              <p><%= @garment.size %></p>            
+              <div style="padding: 0px 0px; width: 100%; text-align: center">
+                <% if @userowner then %>
+                  <%= link_to "Edit garment", edit_garment_path(@garment), class: "btn btn-outline-dark m-1 light-font", style: "width: 90%" %>
+                  <%= link_to "Delete garment", garment_path(@garment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-dark m-1 light-font", style: "width: 90%" %>
+                <% else %>
+                  <%= link_to "Book", new_garment_booking_path(@garment), class: "btn btn-dark showbutton" %>
+                <% end %>
+              </div>  
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
