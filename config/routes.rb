@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'garments#index'
   resources :garments do
+    collection do
+      get :all
+    end
     resources :bookings, only: [:new, :create]
   end
   resources :bookings, only: [:show, :edit, :index, :destroy, :update] do
