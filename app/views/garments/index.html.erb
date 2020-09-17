@@ -1,6 +1,6 @@
 <div class="container indexcontainer">
   <ul class="nav filter-bar">
-    <div>  
+    <div>
       <% if @garments.count > 10 %>
       <ul class="pagination filterselect">
       <li class="page-item disabled">
@@ -21,7 +21,7 @@
       <li class="nav-item filterselect">
       <div class="input-group mb-3">
         <%= form_tag garments_path, method: :get do%>
-        <div class="input-group-prepend" style="display: flex">          
+        <div class="input-group-prepend" style="display: flex">
             <label class="input-group-text"for="inputGroupSelect01">Category</label>
             <%= collection_select(:garment, :category, @garments.select("DISTINCT(CATEGORY)").order(:category), :category, :category, @categoryselection, html_options = {class: "custom-select", id: "GarmentSelector", onchange: "this.form.submit()"}) %>
             <label class="input-group-text"for="inputGroupSelect01">Size</label>
@@ -59,15 +59,20 @@
               <div style="display: flex; flex-direction: column; justify-content: space-evenly">
               <p class="detailstext" > <%= "#{garment.category}" %> </p>
               <p class="detailstext"> <%= "Size: #{garment.size}" %> </p>
-              <p class="detailstext"> <%= "Color: #{garment.colour}" %> </p>  
-              </div>      
-            </div>  
+              <p class="detailstext"> <%= "Color: #{garment.colour}" %> </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   <% end %>
+<div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 
+  </div>
 </div>
 
 

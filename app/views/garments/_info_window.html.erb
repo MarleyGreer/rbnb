@@ -1,0 +1,8 @@
+<div class="d-flex info-box">
+  <%= image_tag garment.photos[0], alt: garment.name, class: "info-photo" %>
+  <div class="pt-3 pl-3 info-description">
+    <h3><%= garment.name %></h3>
+    <p><%= garment.address %></p>
+    <a class='btn btn-dark w-100 info-btn' href="<%= garment_path(garment)%>"> View </a><br>
+  </div>
+</div>
