@@ -3,9 +3,9 @@
   <br><br>
   <div class="container w-50 mb-3">
     <%= simple_form_for [@garment, @booking] do |f| %>
-      <div class="dates">
-        <%= f.input :start_date, as: :date, label: 'Start Date', html5: true, class: "start-date" %>
-        <%= f.input :end_date, as: :date, label: 'End Date', html5: true, class: "end-date" %>
+      <div class="dates" data-unavailable="<%= @garment.unavailable_dates.to_json %>">
+        <%= f.input :start_date, as: :string, label: 'Start Date', html5: true %>
+        <%= f.input :end_date, as: :string, label: 'End Date', html5: true %>
       </div>
       <div class="total-price-display">
         Price per day: $<span class="garment-price"><%= @garment.price %></span>
