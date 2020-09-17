@@ -6,7 +6,8 @@
 
 .filter-bar {
     margin-top: 20px;
-    justify-content: flex-end;
+    display: flex;
+    justify-content: space-between;
     border-bottom: .75px solid black;
 }
 
@@ -63,12 +64,14 @@
     margin-top: 2px;
     z-index: 100;
     background-color: transparent;
+    border: 1px solid transparent;
 }
 
 .roundedcard:hover {
-    border: 4px solid darkgrey;
-    background-color: rgba(1,1,1,.1);
+    border: 1px solid transparent;
+    background-color: rgba(1,1,1,.3);
     cursor: pointer;
+    box-shadow: 3px 3px 5px 6px rgba(1,1,1,.1);
 }
 
 .detailsbox {
@@ -98,4 +101,27 @@
 
 .selectbutton {
     margin-left: 8px;
+    font-family: 'Barlow Condensed';
+    font-weight: 400;
+    font-size: 18px; 
+}
+
+.input-group-text {
+    font-family: 'Barlow Condensed';
+    font-weight: 400;
+    font-size: 18px; 
+    margin-left: 16px;
+}
+
+.custom-select {
+    font-family: 'Barlow Condensed';
+    font-weight: 400;
+    font-size: 18px; 
+    width: fit-content;
+}
+
+.page-link {
+    font-family: 'Barlow Condensed';
+    font-weight: 400;
+    font-size: 18px; 
 }

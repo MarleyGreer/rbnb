@@ -4,13 +4,13 @@
 const channels = require.context('.', true, /_channel\.js$/);
 channels.keys().forEach(channels);
 
-const selectcategory = () => {
-  const categoryselect = document.querySelector('#GarmentSelector');
-  categoryselect.addEventListener('change', () => {
-      console.log(categoryselect.value);
-      console.log("/garments?category="+categoryselect.value);
-      window.location.href= "/garments?category="+categoryselect.value;
-    });
+
+const selectPrice = () => {
+  const priceselect = document.querySelector('#query');
+  priceselect.addEventListener('change', () => {
+    console.log(priceselect.value);
+    priceselect.submit();
+  });
 };
 
-export { selectcategory }
+export { selectPrice }
