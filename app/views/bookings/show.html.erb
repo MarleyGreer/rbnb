@@ -1,29 +1,33 @@
-
 <div class="container">
-<%= link_to "My Orders", bookings_path%>
-<%= link_to "My Listings",  all_bookings_path %>
-  <h2><%= @booking.garment.name %></h2>
+  <div class="col-container">
+  <div style="margin-top: 24px" >
+    <div class="container index col">
+      <%= link_to "<< My orders", bookings_path %>
+      <br>
+      <div class="showcard">
+        <div style="width: 60%; padding: 0px; padding-right: 8px; margin-bottom: 24px">
+          <img class="garmentimage" style="background-image: url('<%= cl_image_path @booking.garment.photos[0].key, crop: :fill %>')">
+        </div>
+        <div class="col boxshade">
+          <div class="detailsboxshow" style="height: 100%">
+            <h3>Booking status</h3>
+            <p class="badge badge-warning" style="padding: 5px"><%= @booking.status.upcase %></p>
+            <h3>Product description</h3>
+            <p><%= @booking.garment.description%></p>
+            <h3>Booking start date</h3>
+            <p><%= @booking.start_date.strftime("%e %m %Y") %></p>
+            <h3>Booking end date</h3>
+            <p><%= @booking.end_date.strftime("%e %m %Y") %></p>
+            <h3>Total price</h3>
+            <p>$<%= @booking.total_price %></p>
+            <%= link_to "Edit booking", edit_booking_path(@booking), class: "btn btn-outline-dark light-font", style: "width: 100%" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <%= cl_image_tag @booking.garment.photos[0].key, height: 500, width: 600%>
-      </div>
-      <div class="col">
-        <h3>Booking Status</h3>
-           <%= @booking.status.capitalize %><br>
-           <h3>Description</h3>Description: <%= @booking.garment.description%><br>
-           <h3>Start Date:</h3>
-           <%= @booking.start_date.strftime("%e %m %Y") %><br>
-          <h3>End Date</h3>
-           <%= @booking.end_date.strftime("%e %m %Y") %><br>
-          <h3>Total Price ($)</h3>
-           <%= @booking.total_price %><br>
-             <%= link_to "View Details", garment_path(@booking.garment), class: "btn btn-outline-success" %>
-      </div>
 
-    </div>
-
-  </div>
 
