@@ -1,0 +1,27 @@
+.mapboxgl-popup {
+  width: 400px;
+  height: 220px;
+}
+
+.mapboxgl-popup-content {
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  width: 400px;
+  height: 220px;
+}
+
+.info-photo {
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.info-description {
+  max-width: 300px;
+  height: 200px;
+}
+
+
+.info-btn {
+ position:relative;
+ bottom:0;
+}

@@ -10,6 +10,16 @@ class GarmentsController < ApplicationController
     # @categoryselection = {prompt: true}
     # @colourselection = {prompt: true}
     # pricing_options
+    @garments = Garment.where.not(latitude: nil, longitude: nil)
+    @markers = @garments.geocoded.map do |garment|
+      {
+        lat: garment.latitude,
+        lng: garment.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { garment: garment })
+      }
+    end
+
+
     @garments = Garment.all
     @sizeselection = {prompt: true}
     @categoryselection = {prompt: true}
@@ -18,7 +28,7 @@ class GarmentsController < ApplicationController
       @priceselection = 0
       pricing_options
     else
-      @garments = @garments.where(price: 0..25) if params[:pricequery] == "1" 
+      @garments = @garments.where(price: 0..25) if params[:pricequery] == "1"
       @garments = @garments.where(price: 26..50) if params[:pricequery] == "2"
       @garments = @garments.where(price: 51..75) if params[:pricequery] == "3"
       @garments = @garments.where(price: 76..100) if params[:pricequery] == "4"
@@ -45,16 +55,8 @@ class GarmentsController < ApplicationController
         pricing_options
       end
     end
-    
-    @garments = [] if @garments.nil?
-    #   @markers = @garments.geocoded.map do |garment|
-    #   {
-    #     lat: garment.latitude,
-    #     lng: garment.longitude
-    #   }
-    # end
-    
   end
+
 
   def all
     @garments = Garment.where(user: current_user)
