@@ -1,5 +1,3 @@
-
-
 class Garment < ApplicationRecord
   VALID_SIZES = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 
@@ -19,10 +17,13 @@ class Garment < ApplicationRecord
   # geocoded_by :address
   # after_validation :geocode, if: :will_save_change_to_address?
 
-
   scope :filter_by_category, -> (category) { where category: category }
   scope :filter_by_price, -> (price) { where price: price }
   scope :filter_by_size, -> (size) { where size: size }
 
-
+  def unavailable_dates
+    bookings.pluck(:start_date, :end_date).map do |range|
+      { from: range[0], to: range[1] }
+    end
+  end
 end

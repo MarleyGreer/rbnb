@@ -28,12 +28,12 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initTotalPriceDisplay } from '../components/init_total_price_display';
-
+import { toggleDateInputs } from '../components/init_booking_availability';
 
 document.addEventListener('turbolinks:load', () => {
   initTotalPriceDisplay();
+  toggleDateInputs();
 });
-
 
 import { initMapbox } from '../plugins/init_mapbox';
 
