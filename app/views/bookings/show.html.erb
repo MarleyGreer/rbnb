@@ -38,11 +38,13 @@
                   <h3>Booking end date</h3>
                   <p><%= @booking.end_date.strftime("%e %m %Y") %></p>
                   <h3>Total price</h3>
-                  <p>$<%= @booking.total_price %></p>       
-                </div>     
+                  <p>$<%= @booking.total_price %></p>
+                </div>
                 <div style="padding: 0px 0px; width: 100%; text-align: center">
-                  <%= link_to "Edit booking", edit_booking_path(@booking), class: "btn btn-outline-dark light-font", style: "width: 100%" %>
-                </div>  
+                  <button type="button" class="btn btn-outline-dark" style="width: 100%" data-toggle="modal" data-target="#exampleModal">
+                    Edit booking
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -52,4 +54,32 @@
   </div>
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="exampleModalLabel">Edit booking</h2>
+        <button type="button" style="margin: 0; position: absolute; right: 0px" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <br><br>
+      <div class="container w-50 mb-3">
+        <%= simple_form_for @booking do |f| %>
+          <div class="dates" data-unavailable="<%= @garment.unavailable_dates.to_json %>">
+            <%= f.input :start_date, as: :string, label: 'Start Date' %>
+            <%= f.input :end_date, as: :string, label: 'End Date' %>
+          </div>
+          <div class="total-price-display">
+            Price per day: $<span class="garment-price"><%= @garment.price %></span>
+            <br>
+            <strong>Total price: $<span class="total-price"></span></strong>
+          </div>
+          <br><br>
+          <%= f.button :submit, class: "btn-dark mb-3", style: "width: 100%" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 

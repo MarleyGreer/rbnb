@@ -47,8 +47,8 @@
                 <h3>Colour </h3>
                 <p><%= @garment.colour %></p>
                 <h3>Size </h3>
-                <p><%= @garment.size %></p>       
-              </div>     
+                <p><%= @garment.size %></p>
+              </div>
               <div style="padding: 0px 0px; width: 100%; text-align: center">
                 <% if @userowner then %>
                   <%= link_to "Edit garment", edit_garment_path(@garment), class: "btn btn-outline-dark light-font", style: "width: 100%; margin-top: 16px" %>
@@ -58,7 +58,7 @@
                     Book
                   </button>
                 <% end %>
-              </div>  
+              </div>
             </div>
           </div>
         </div>
@@ -72,27 +72,26 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 id="exampleModalLabel"> Make a booking </h2>
+        <h2 id="exampleModalLabel">Make a booking</h2>
         <button type="button" style="margin: 0; position: absolute; right: 0px" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>  
+      </div>
       <br><br>
       <div class="container w-50 mb-3">
-        <% @booking = Booking.new %>
-        <%= simple_form_for [@garment, @booking] do |f| %>
-          <div class="dates">
-            <%= f.input :start_date, as: :date, label: 'Start Date', html5: true, class: "start-date" %>
-            <%= f.input :end_date, as: :date, label: 'End Date', html5: true, class: "end-date" %>
-          </div>
-          <div class="total-price-display">
-            Price per day: $<span class="garment-price"><%= @garment.price %></span>
-            <br>
-            <strong>Total price: $<span class="total-price"></span></strong>
-          </div>
-          <br><br>
-          <%= f.button :submit, class: "btn-dark search-cocktails mb-3", style: "width: 100%" %>
-        <% end %>
+      <%= simple_form_for [@garment, @booking] do |f| %>
+        <div class="dates" data-unavailable="<%= @garment.unavailable_dates.to_json %>">
+          <%= f.input :start_date, as: :string, label: 'Start Date' %>
+          <%= f.input :end_date, as: :string, label: 'End Date' %>
+        </div>
+        <div class="total-price-display">
+          Price per day: $<span class="garment-price"><%= @garment.price %></span>
+          <br>
+          <strong>Total price: $<span class="total-price"></span></strong>
+        </div>
+        <br><br>
+        <%= f.button :submit, class: "btn-dark mb-3", style: "width: 100%" %>
+      <% end %>
       </div>
     </div>
   </div>
