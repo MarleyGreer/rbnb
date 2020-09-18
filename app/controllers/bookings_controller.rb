@@ -7,6 +7,7 @@ before_action :set_booking, only: [:show, :edit, :update, :confirm, :decline, :c
 
   def show
     @booking = Booking.find(params[:id])
+     @review = Review.new
   end
 
   def new

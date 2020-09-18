@@ -9,7 +9,7 @@
         <div style="width: 60%; padding: 0px; padding-right: 8px; margin-bottom: 24px">
         <img class="garmentimage" style="background-image: url('<%= cl_image_path @garment.photos[0].key, height: 300, width: 400, crop: :fill %>')">
         </div>
-        <div class="col boxshade" style="width: 40%; padding: 0px 8px; margin-bottom: 24px; height: auto; display: flex; flex-direction: column; justify-content: space-between"> 
+        <div class="col boxshade" style="width: 40%; padding: 0px 8px; margin-bottom: 24px; height: auto; display: flex; flex-direction: column; justify-content: space-between">
           <div class="detailsboxshow" style="height: 100%">
             <p class="detailstext" style="color: red; border-radius: 8px; border-width: 1px; transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s; border-color: rgb(34, 34, 34) !important; background: rgb(255, 255, 255) !important; color: rgb(34, 34, 34) !important; border-style: solid; padding: 8px 8px; font-weight: 600; margin-bottom: 8px; font-size: 32px; line-height: 40px; background-color: white; border: .5px solid black"> <%= "$#{@garment.price} per day" %> </p>
             <div>
@@ -20,24 +20,46 @@
               <h3> Details </h3>
               <p> <%= "#{@garment.category} - Size: #{@garment.size} - Color: #{@garment.colour} " %> </p>
             </div>
-          </div>  
+          </div>
 
-          <div style="padding-top: 8px; border-top: 1px solid grey; "> 
+          <div style="padding-top: 8px; border-top: 1px solid grey; ">
             <div style="margin-bottom: 16px; padding: 0px 0px; width: 100%">
               <% if @userowner == true then %>
-              <%= link_to "Edit garment", edit_garment_path(@garment), method: :get, data: { confirm: "Are you sure?" }, class: "btn btn-outline-success showbutton"%>   
+              <%= link_to "Edit garment", edit_garment_path(@garment), method: :get, data: { confirm: "Are you sure?" }, class: "btn btn-outline-success showbutton"%>
               <%= link_to "Delete garment", garment_path(@garment), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger showbutton"%>
               <% end %>
               <%= link_to "Back to all garments", garments_path, class: "btn btn-outline-dark showbutton" %>
               <%= link_to "Book", new_garment_booking_path(@garment), class: "btn btn-dark showbutton" %>
             </div>
-          </div>  
-          
+          </div>
+
+
+
         </div>
+
       </div>
+
     </div>
+    <div class="review boxshade container">
+            <h3>Reviews</h3>
+
+          <ul class="list-group">
+            <% @garment.reviews.each do |review| %>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="badge badge-primary badge-pill">
+                  <% counter = 0 %>
+                  <% 5.times do %>
+                    <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+                    <% counter += 1 %>
+                  <% end %>
+                </span>
+                <%= review.content %>
+              </li>
+            <% end %>
+          </ul>
+      </div>
   </div>
-  </div>
+</div>
 <!--
 <div id="map"
      style="width: 100%; height: 600px;"
