@@ -1,26 +1,52 @@
 
-<h1 class="header">MY ORDERS</h1>
-<div class="container indexcontainer index">
-  <% @bookings.each do |booking| %>
-    <div class="garmentcard">
-      <div class="card roundedcard">
-        <img class="card-img-top garmentimageindex" style="height: 0px; padding: 50%; width: 100%; background-image: url('<%= cl_image_path booking.garment.photos[0].key, height: 300, width: 400, crop: :fill %>')">
-        <div class="card-body garmenttext">
-          <div class="split" style="display:flex">
-            <div style="width: 60%" class = "summarybox">
-              <h5 class='card-title detailstext' style="font-size: 24px; line-height: 28px; margin-bottom: 8px; border-bottom: 1px solid lightgrey"> <%= booking.garment.name%> </h5>
-              <br>
-              <p class="card-text detailstext" > Start Date:  <%= "#{booking.start_date.strftime("%e %m %Y")}" %> </p>
-              <p class="card-text detailstext"> End Date: <%= "Size: #{booking.end_date.strftime("%e %m %Y")}" %> </p>
-              <p class='card-text detailstext'> Booking Status: <%= booking.status.capitalize %> </p>
-              <p class="card-text detailstext"> <%= "Total Price: $#{booking.total_price}" %> </p>
-              <br>
-              <a class='btn btn-outline-dark' style="font-family: 'Barlow Condensed'; width: 100%" href="<%= booking_path(booking)%>" style="width: 100%"> View Details </a>
-              </div>
-            </div>
+
+<div class="container indexcontainer">
+  <ul class="nav bookingsfilter-bar ">
+    <div style="display: flex">
+      <li class="nav-item filterselect">
+      <div class="input-group mb-3">
+        <%= form_tag bookings_path, method: :get do%>
+        <div class="input-group-prepend" style="display: flex">
+            <label class="input-group-text"for="inputGroupSelect01">Category</label>
+            <%= collection_select(:booking, :status, Booking.all.select("DISTINCT(STATUS)").order(:status), :status, :status, @bookingselect, html_options = {class: "custom-select", id: "GarmentSelector", onchange: "this.form.submit()"}) %>
           </div>
-        </div>
+        <% end %>
       </div>
-  <% end %>
+      </li>
+    </div>
+  </ul>
+
 </div>
 
+<div class="container indexcontainer index bookingscontainer">
+  <table class="table">
+    <thead>
+      <tr style="background-color: rgba(1,1,1,.1)">
+        <th scope="col">id</th>
+        <th scope="col">Garment Name</th>
+        <th scope="col">Booker</th>
+        <th scope="col">Garment Owner</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Price</th>
+        <th scope="col">Status</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    <% i = 1%>
+    <% @bookings.each do |booking| %>
+      <tr>
+        <th scope="row"><%=i%></th>
+        <td><%= booking.garment.name%></td>
+        <td><%= "#{booking.user.first_name} #{booking.user.last_name}" %>
+        <td><%= booking.start_date.strftime("%e.%m.%Y") %></td>
+        <td><%= booking.end_date.strftime("%e.%m.%Y") %></td>
+        <td><%= "$#{booking.total_price}" %></td>
+        <td><%= booking.status.capitalize %> </td>
+      </tr>
+      <% i = i + 1%>
+    <% end %>
+    </tbody>
+  </table>
+</div>
