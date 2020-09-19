@@ -33,6 +33,7 @@
     width: 25%;
     min-width: 300px;
     max-width: 400px;
+    height: 496px;
 }
 
 .index {
@@ -60,18 +61,19 @@
 .roundedcard {
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 3px 3px 5px 6px rgba(1,1,1,.04);
+    // box-shadow: 3px 3px 5px 6px rgba(1,1,1,.04);
     margin-top: 2px;
     z-index: 100;
     background-color: transparent;
-    border: 1px solid transparent;
+    border: .01px solid grey;
 }
 
 .roundedcard:hover {
-    border: 1px solid transparent;
-    background-color: rgba(1,1,1,.3);
+    border: .01px solid grey;
+    background-color: rgba(1,1,1,.1);
     cursor: pointer;
-    box-shadow: 3px 3px 5px 6px rgba(1,1,1,.1);
+    
+    // box-shadow: 3px 3px 5px 6px rgba(1,1,1,.1);
 }
 
 .detailsbox {

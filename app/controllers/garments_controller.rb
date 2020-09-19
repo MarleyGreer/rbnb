@@ -5,11 +5,6 @@ class GarmentsController < ApplicationController
   end
 
   def index
-    # @garments = Garment.all
-    # @sizeselection = {prompt: true}
-    # @categoryselection = {prompt: true}
-    # @colourselection = {prompt: true}
-    # pricing_options
     @garments = Garment.where.not(latitude: nil, longitude: nil)
     @markers = @garments.geocoded.map do |garment|
       {

@@ -6,12 +6,14 @@ p  {
  h2 {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 32px;
+    margin-bottom: 0px
   }
 
 h3 {
     font-family: 'Barlow Condensed';
     font-size: 18px;
-    padding: 8px 0px;
+    margin-bottom: 0px
+
 }
 
 h1 {
@@ -27,20 +29,16 @@ h3 {
 a {
     font-family: 'Barlow Condensed';
     font-size: 18px;
-    font-color: black;
+    color: #167FFB;
     margin: 0px;
 }
 
-.garmentimage {
-    display: block;
-    width: 100%;
-    left: 0px;
-    top: 0px;
-    border-radius: 8px 8px 8px 8px;
-    background-size: cover;
-    background-position: center;
-    padding: 50%;
-    height: auto;
+.boxshade {
+
+}
+
+.carousel-item {
+    height: 100%;
 }
 
 .col-container {
@@ -55,21 +53,47 @@ a {
     padding: 32px 32px;
 }
 
-.boxshade {
-    background-color: rgba(1,1,1,.05);
-    border-radius: 8px;
+
+.garmentimage {
+    display: block;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    border-radius: 8px 8px 8px 8px;
+    background-size: cover;
+    background-position: center;
+    padding: 50%;
+    height: auto;
 }
 
-.showcard {
-    background-color: white;
-    width: 100%;
+.modal-header {
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    position: relative;
     display: flex;
-    padding: 0px;
-    border-radius: 8px;
-    margin-top: 24px;
+    flex-direction: column;
+    margin-top: 30%;
 }
 
 .showbutton {
     width: 100%;
     margin-top: 8px;
+}
+
+.showcard {
+    background-color: rgba(1, 1, 1, 0.0);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 0px;
+    border-radius: 8px;
+    justify-content: space-between;
+}
+
+.show-image {
+    height: 100%;
+    object-fit: cover;
 }

@@ -3,6 +3,11 @@ before_action :set_booking, only: [:show, :edit, :update, :confirm, :decline, :c
 
   def index
     @bookings = Booking.where(user: current_user)
+    @bookingselect = {prompt: true}
+    if params[:booking].present?
+      @bookings = @bookings.where(status: params[:booking][:status])
+      @bookingselect = {selected: params[:booking][:status]}
+    end
   end
 
   def show

@@ -1,33 +1,55 @@
 <div class="container">
+
   <div class="col-container">
-  <div style="margin-top: 24px" >
-    <div class="container index col">
-      <%= link_to "<< My orders", bookings_path %>
-      <br>
-      <div class="showcard">
-        <div style="width: 60%; padding: 0px; padding-right: 8px; margin-bottom: 24px">
-          <img class="garmentimage" style="background-image: url('<%= cl_image_path @booking.garment.photos[0].key, crop: :fill %>')">
-        </div>
-        <div class="col boxshade">
-          <div class="detailsboxshow" style="height: 100%">
-            <h3>Booking status</h3>
-            <p class="badge badge-warning" style="padding: 5px"><%= @booking.status.upcase %></p>
-            <h3>Product description</h3>
-            <p><%= @booking.garment.description%></p>
-            <h3>Booking start date</h3>
-            <p><%= @booking.start_date.strftime("%e %m %Y") %></p>
-            <h3>Booking end date</h3>
-            <p><%= @booking.end_date.strftime("%e %m %Y") %></p>
-            <h3>Total price</h3>
-            <p>$<%= @booking.total_price %></p>
-            <%= link_to "Edit booking", edit_booking_path(@booking), class: "btn btn-outline-dark light-font", style: "width: 100%" %>
+    <div style="margin-top: 24px" >
+      <div class="container index col">
+        <%= link_to "<< My orders", bookings_path %>
+        <br>
+        <div style="height: 77vh; padding: 16px 0px 64px 0px">
+          <div class="showcard">
+            <div class="boxshade" style="width: 48%; padding: 0px 0px; height: 100%; display: flex; flex-direction: column; justify-content: space-between">
+              <div class="detailsboxshow" style="height: 100%; box-sizing: border-box; padding: 0px 0px">
+                <div id="carouselExampleControls" class="carousel slide" style="height: 100%" data-ride="carousel">
+                  <div class="carousel-inner" style="height: 100%">
+                    <div class="carousel-item active">
+                      <img class="d-block w-100 show-image" src="<%= cl_image_path @booking.garment.photos[0].key, crop: :fill %>" alt="...">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="boxshade" style="width: 48%; padding: 0px 0px; height: 100%; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden">
+              <div class="detailsboxshow" style="height: 100%; box-sizing: border-box; padding: 0px 0px; overflow: auto">
+                <div>
+                  <h1 style="width: 100%; border-bottom: 1px solid lightgrey; padding-bottom: 16px">Booking Status</h1>
+                </div>
+                <div>
+                  <p class="badge badge-warning" style="padding: 5px"><%= @booking.status.upcase %></p>
+                </div>
+                <div>
+                  <h3>Description</h3>
+                  <p><%= @booking.garment.description %></p>
+                  <h3>Colour </h3>
+                  <p><%= @booking.garment.colour %></p>
+                  <h3>Size </h3>
+                  <p><%= @booking.garment.size %></p>
+                  <h3>Booking start date</h3>
+                  <p><%= @booking.start_date.strftime("%e %m %Y") %></p>
+                  <h3>Booking end date</h3>
+                  <p><%= @booking.end_date.strftime("%e %m %Y") %></p>
+                  <h3>Total price</h3>
+                  <p>$<%= @booking.total_price %></p>       
+                </div>     
+                <div style="padding: 0px 0px; width: 100%; text-align: center">
+                  <%= link_to "Edit booking", edit_booking_path(@booking), class: "btn btn-outline-dark light-font", style: "width: 100%" %>
+                </div>  
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
 </div>
-
 
 
