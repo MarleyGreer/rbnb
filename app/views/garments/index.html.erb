@@ -1,13 +1,13 @@
 <div class="container indexcontainer">
   <ul class="nav filter-bar">
     <div>
-      <% if @garments.count > 10 %>
+      <% if @garments.count > 20 %>
       <ul class="pagination filterselect">
       <li class="page-item disabled">
         <span class="page-link">Previous</span>
       </li>
       <% i = 1%>
-      <% ((@garments.count)/10.to_f).ceil.times do %>
+      <% ((@garments.count)/20.to_f).ceil.times do %>
       <li class="page-item"><a class="page-link" href="#"><%=i%></a></li>
       <% i = i + 1%>
       <% end %>

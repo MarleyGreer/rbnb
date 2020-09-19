@@ -33,6 +33,9 @@ import { toggleDateInputs } from '../components/init_booking_availability';
 document.addEventListener('turbolinks:load', () => {
   initTotalPriceDisplay();
   toggleDateInputs();
+  $("tr[data-link]").click(function() {
+    window.location = $(this).data("link")
+  });
 });
 
 import { initMapbox } from '../plugins/init_mapbox';
@@ -40,3 +43,4 @@ import { initMapbox } from '../plugins/init_mapbox';
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
 })
+

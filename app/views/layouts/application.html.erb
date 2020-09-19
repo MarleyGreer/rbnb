@@ -14,9 +14,10 @@
   <body>
 
     <%= render 'shared/navbar' %>
-    <p class="notice" style="margin-left: 24px" ><%= notice %></p>
-    <p class="alert" style="margin-left: 24px"><%= alert %></p>
     <%= render 'shared/flashes' %>
+    <%= render "shared/login_modal" %>
+
+    <%= render "shared/sign_up_modal" %>
 
     <%= yield %>
   </body>

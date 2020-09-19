@@ -10,6 +10,19 @@ before_action :set_booking, only: [:show, :edit, :update, :confirm, :decline, :c
     end
   end
 
+  def all
+    @bookings = []
+      Booking.all.select do |booking|
+        if booking.garment.user == current_user
+          @bookings << booking
+        end
+      end
+    if params[:booking].present?
+      @bookings = @bookings.where(status: params[:booking][:status])
+      @bookingselect = {selected: params[:booking][:status]}
+    end
+  end
+
   def show
     @booking = Booking.find(params[:id])
   end
@@ -59,15 +72,6 @@ before_action :set_booking, only: [:show, :edit, :update, :confirm, :decline, :c
     @booking.status = "cancelled"
     @booking.save
     redirect_to cancelled_bookings_path
-  end
-
-  def all
-    @bookings = []
-      Booking.all.select do |booking|
-      if booking.garment.user == current_user
-        @bookings << booking
-      end
-    end
   end
 
   def confirmed
