@@ -13,8 +13,8 @@ const initTotalPriceDisplay = () => {
   const endDateInput = formDates.querySelector("#booking_end_date")
 
   startDateInput.addEventListener('change', (event) => {
-    const startDate = startDateInput.value
-    const endDate = endDateInput.value
+    const startDate = startDateInput.value.split("-").reverse().join("-")
+    const endDate = endDateInput.value.split("-").reverse().join("-")
     const bookingStartDate = new Date(startDate)
     const bookingEndDate = new Date(endDate)
     const bookingDays = (bookingEndDate - bookingStartDate) / 86400000
@@ -23,8 +23,8 @@ const initTotalPriceDisplay = () => {
   });
 
   endDateInput.addEventListener('change', (event) => {
-    const startDate = startDateInput.value
-    const endDate = endDateInput.value
+    const startDate = startDateInput.value.split("-").reverse().join("-")
+    const endDate = endDateInput.value.split("-").reverse().join("-")
     const bookingStartDate = new Date(startDate)
     const bookingEndDate = new Date(endDate)
     const bookingDays = (bookingEndDate - bookingStartDate) / 86400000

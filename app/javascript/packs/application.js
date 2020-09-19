@@ -28,13 +28,9 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initTotalPriceDisplay } from '../components/init_total_price_display';
-<<<<<<< Updated upstream
-import { initMapbox } from '../plugins/init_mapbox';
-=======
->>>>>>> Stashed changes
 import { toggleDateInputs } from '../components/init_booking_availability';
+import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
-
 
 document.addEventListener('turbolinks:load', () => {
   initTotalPriceDisplay();
@@ -42,6 +38,5 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   toggleDateInputs();
 });
-
 
 
