@@ -10,9 +10,11 @@ class GarmentsController < ApplicationController
       {
         lat: garment.latitude,
         lng: garment.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { garment: garment })
+        infoWindow: render_to_string(partial: "info_window", locals: { garment: garment }),
+        image_url: helpers.asset_url('dress-icon.png')
       }
     end
+
     @garments = Garment.all
     @sizeselection = {prompt: true}
     @categoryselection = {prompt: true}
