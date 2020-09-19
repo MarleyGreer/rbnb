@@ -29,18 +29,16 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { initTotalPriceDisplay } from '../components/init_total_price_display';
 import { toggleDateInputs } from '../components/init_booking_availability';
+import { initMapbox } from '../plugins/init_mapbox';
+import { initAutocomplete } from '../plugins/init_autocomplete';
 
 document.addEventListener('turbolinks:load', () => {
   initTotalPriceDisplay();
+  initMapbox();
+  initAutocomplete();
   toggleDateInputs();
   $("tr[data-link]").click(function() {
     window.location = $(this).data("link")
   });
 });
-
-import { initMapbox } from '../plugins/init_mapbox';
-
-document.addEventListener('turbolinks:load', () => {
-  initMapbox();
-})
 
