@@ -7,7 +7,7 @@
   font-size: 20px;
 
   .active {
-    padding: 0.5rem;
+
   }
 }
 
@@ -20,6 +20,17 @@
 }
 
 .logo {
-  width: 120px;
-  height: 120px;
+  height: 64px;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.show {
+
+}
+
+.navbar {
+  padding: .75rem 4rem;
 }

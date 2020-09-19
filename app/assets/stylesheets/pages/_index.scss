@@ -61,16 +61,16 @@
 .roundedcard {
     border-radius: 16px;
     overflow: hidden;
-    // box-shadow: 3px 3px 5px 6px rgba(1,1,1,.04);
+    box-shadow: 1px 1px 5px 6px rgba(1,1,1,.04);
     margin-top: 2px;
     z-index: 100;
     background-color: transparent;
-    border: .01px solid grey;
+    
 }
 
 .roundedcard:hover {
-    border: .01px solid grey;
-    background-color: rgba(1,1,1,.1);
+    box-shadow: 1px 1px 5px 6px rgba(1,1,1,.07);
+    background-color: rgba(1,1,1,.04);
     cursor: pointer;
     
     // box-shadow: 3px 3px 5px 6px rgba(1,1,1,.1);

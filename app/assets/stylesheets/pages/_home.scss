@@ -39,6 +39,7 @@
 
 .home-link {
   color: black;
+  margin-right: 20px;
 }
 
 
@@ -57,3 +58,7 @@ td {
   font-family: 'Barlow Condensed', sans-serif;
 }
 
+tr:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}

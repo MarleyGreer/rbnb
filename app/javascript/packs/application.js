@@ -37,6 +37,8 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
   toggleDateInputs();
+  $("tr[data-link]").click(function() {
+    window.location = $(this).data("link")
+  });
 });
-
 

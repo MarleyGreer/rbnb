@@ -1,3 +1,54 @@
-<%= render "./shared/bookings-menu-buttons.html.erb" %>
-<h1 class="header">ALL BOOKINGS</h1>
-<%= render 'shared/view-bookings' %>
+<div class="container indexcontainer">
+  <ul class="nav bookingsfilter-bar ">
+    <div style="display: flex">
+      <li class="nav-item filterselect">
+      <div class="input-group mb-3">
+        <%= form_tag bookings_path, method: :get do%>
+        <div class="input-group-prepend" style="display: flex">
+        <% if @bookings.empty? %> 
+          <label class="input-group-text"for="inputGroupSelect01">No bookings</label>
+        <% else %>  
+          <label class="input-group-text"for="inputGroupSelect01">Category</label>
+          <%= collection_select(:booking, :status, @bookings.select("DISTINCT(STATUS)").order(:status), :status, :status, @bookingselect, html_options = {class: "custom-select", id: "GarmentSelector", onchange: "this.form.submit()"}) %>
+        <% end%>
+        </div>
+        <% end %>
+        
+      </div>
+      </li>
+    </div>
+  </ul>
+
+</div>
+
+<div class="container indexcontainer index bookingscontainer">
+  <table class="table">
+    <thead>
+      <tr style="background-color: rgba(1,1,1,.1)">
+        <th scope="col">id</th>
+        <th scope="col">Garment Name</th>
+        <th scope="col">Booker</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Price</th>
+        <th scope="col">Status</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    <% i = 1%>
+    <% @bookings.each do |booking| %>
+      <tr data-link="<%= booking_path(booking) %>">
+        <th scope="row"><%=i%></th>
+        <td><%= booking.garment.name%></td>
+        <td><%= "#{booking.user.first_name} #{booking.user.last_name}" %>
+        <td><%= booking.start_date.strftime("%e.%m.%Y") %></td>
+        <td><%= booking.end_date.strftime("%e.%m.%Y") %></td>
+        <td><%= "$#{booking.total_price.presence || 0}" %></td>
+        <td><%= booking.status.capitalize %> </td>
+      </tr>
+      <% i = i + 1%>
+    <% end %>
+    </tbody>
+  </table>
+</div>
