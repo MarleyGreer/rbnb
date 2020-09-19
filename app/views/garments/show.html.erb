@@ -48,7 +48,20 @@
                 <p><%= @garment.colour %></p>
                 <h3>Size </h3>
                 <p><%= @garment.size %></p>
+
+
+
+
+                <% if @reviews.present? %>
+                <h3> Average Rating </h3>
+                <p><%=@average%>/5 from  <span  data-toggle="modal" data-target="#exampleModalCenter">
+                  <u><%= @reviews.count %> Reviews</u>
+                </span></p>
+
               </div>
+
+              <% end %>
+
               <div style="padding: 0px 0px; width: 100%; text-align: center">
                 <% if @userowner then %>
                   <%= link_to "Edit garment", edit_garment_path(@garment), class: "btn btn-outline-dark light-font", style: "width: 100%; margin-top: 16px" %>
@@ -96,14 +109,30 @@
     </div>
   </div>
 </div>
-<% if @reviews.present? %>
-<h1> Reviews </h1>
-<% @reviews.each do |review| %>
-<%= review.content %>
-<%= review.rating %>
-<% booking = @garment.bookings.where(id: review.booking_id) %>
-<% end %>
-<% else %>
-<h2><%= "No Reviews For This Listing Yet..." %></h2>
-<% end %>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLongTitle">Reviews </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <% @reviews.each do |review| %>
+        <h5 class="modal-title"><%= review.booking.user.first_name %>  - Rental Date: <%= review.booking.start_date.strftime("%e %m %Y") %></h5>
+        <p><%= review.content %></p>
+        <p>Rating: <%= review.rating %></p>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
 
