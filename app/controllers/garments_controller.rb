@@ -61,7 +61,11 @@ class GarmentsController < ApplicationController
     @booking = Booking.new
     @garment = Garment.find(params[:id])
     @bookings = @garment.bookings
-
+    if @garment.user == current_user
+      @userowner = true
+    else
+      @userowner = false
+    end
     @reviews = []
     @bookings.map do |booking|
       booking.reviews.map do |review|
