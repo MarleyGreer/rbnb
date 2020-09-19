@@ -60,12 +60,26 @@ class GarmentsController < ApplicationController
   def show
     @booking = Booking.new
     @garment = Garment.find(params[:id])
+    @bookings = @garment.bookings
+
+    @reviews = []
+    @bookings.map do |booking|
+      booking.reviews.map do |review|
+        if review.present?
+        @reviews << review
+
+        end
+      end
+    end
+
+
     if @garment.user == current_user
       @userowner = true
     else
       @userowner = false
     end
   end
+
 
   def new
     @garment = Garment.new
