@@ -4,7 +4,7 @@
 }
 
 .mapboxgl-popup-content {
-  text-align: left;
+  text-align: center;
   font-family: 'Open Sans', sans-serif;
   width: 400px;
   height: 220px;
@@ -16,12 +16,8 @@
 }
 
 .info-description {
-  max-width: 300px;
+  width: 300px;
   height: 200px;
 }
 
 
-.info-btn {
- position:relative;
- bottom:0;
-}
