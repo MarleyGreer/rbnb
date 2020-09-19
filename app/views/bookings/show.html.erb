@@ -63,6 +63,10 @@
                     <%= link_to "Decline booking", decline_booking_path(@booking), method: :patch, class: "btn btn-outline-dark light-font", style: "width: 100%; margin-top: 16px" %>
                   <% elsif @userowner && @booking.status == "confirmed" then %>
                     <%= link_to "Cancel booking", cancel_booking_path(@booking), method: :patch, class: "btn btn-outline-dark light-font", style: "width: 100%; margin-top: 16px" %>
+                  <% else  %>
+                    <% if Time.now > @booking.end_date && @booking.reviews.count == 0 && @booking.user == current_user %>
+                      <%= link_to "Add review", new_booking_review_path(@booking), class: "btn btn-outline-dark light-font", style: "width: 100%; margin-top: 16px" %>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
@@ -73,9 +77,3 @@
     </div>
   </div>
 </div>
-
-
-
-<% if Time.now > @booking.end_date && @booking.reviews.count == 0 && @booking.user == current_user %>
-<%= link_to "Add Review", new_booking_review_path(@booking) %>
-<% end %>
