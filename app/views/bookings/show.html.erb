@@ -4,7 +4,7 @@
     <div style="margin-top: 24px" >
       <div class="container index col">
         <% if @userowner %>
-        <%= link_to "<< All bookings", all_bookings_path %>
+        <%= link_to "<< All my bookings", all_bookings_path %>
         <% elsif %>
         <%= link_to "<< My orders", bookings_path %>
         <% end %>
