@@ -99,9 +99,10 @@
 <% if @reviews.present? %>
 <h1> Reviews </h1>
 <% @reviews.each do |review| %>
+<%= review.booking.user.first_name %>
+<%= review.booking.user.last_name %>
 <%= review.content %>
 <%= review.rating %>
-<% booking = @garment.bookings.where(id: review.booking_id) %>
 <% end %>
 <% else %>
 <h2><%= "No Reviews For This Listing Yet..." %></h2>
