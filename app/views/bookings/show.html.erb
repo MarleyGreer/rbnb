@@ -32,6 +32,7 @@
                   <% elsif %>
                   <% @booking.status == "declined" %>
                   <p class="badge badge-dark" style="padding: 5px"><%= @booking.status.upcase %></p>
+                  <% elsif %>
                   <% @booking.status == "cancelled" %>
                   <p class="badge badge-danger" style="padding: 5px"><%= @booking.status.upcase %></p>
                   <% end %>
