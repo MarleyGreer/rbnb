@@ -3,7 +3,11 @@
   <div class="col-container">
     <div style="margin-top: 24px" >
       <div class="container index col">
+        <% if @userowner %>
+        <%= link_to "<< All my bookings", all_bookings_path %>
+        <% elsif %>
         <%= link_to "<< My orders", bookings_path %>
+        <% end %>
         <br>
         <div style="height: 77vh; padding: 16px 0px 64px 0px">
           <div class="showcard">
