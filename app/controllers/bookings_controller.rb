@@ -2,25 +2,24 @@ class BookingsController < ApplicationController
 before_action :set_booking, only: [:show, :edit, :update, :confirm, :decline, :cancel]
 
   def index
-    @bookings = Booking.where(user: current_user)
+    @bookings = current_user.bookings
     @bookingselect = {prompt: true}
     if params[:booking].present?
-      @bookings = @bookings.where(status: params[:booking][:status])
+      @bookings = @bookings.all.where(status: params[:booking][:status])
       @bookingselect = {selected: params[:booking][:status]}
     end
+    
   end
 
   def all
-    @bookings = []
-      Booking.all.select do |booking|
-        if booking.garment.user == current_user
-          @bookings << booking
-        end
-      end
+    @bookings = current_user.ownerbookings
+    @bookingselect = {prompt: true}
+
     if params[:booking].present?
-      @bookings = @bookings.where(status: params[:booking][:status])
+      @bookings = @bookings.all.where(status: params[:booking][:status])
       @bookingselect = {selected: params[:booking][:status]}
     end
+    
   end
 
   def show

@@ -8,6 +8,9 @@ class Booking < ApplicationRecord
   validates :status, inclusion: { in: ["pending", "confirmed", "declined", "cancelled"] }
   validate :end_date_after_start_date
 
+  scope :filter_by_status, -> (status) { where status: status }
+  scope :filter_by_garment, -> (garment) { where garment: garment }
+
   private
 
   def end_date_after_start_date
