@@ -34,7 +34,9 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 
 document.addEventListener('turbolinks:load', () => {
   initTotalPriceDisplay();
-  initMapbox();
+  setTimeout(() => {initMapbox()}, 1000);
   initAutocomplete();
 });
+
+
 
