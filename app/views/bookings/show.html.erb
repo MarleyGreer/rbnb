@@ -83,3 +83,6 @@
   </div>
 </div>
 
+<% if Time.now > @booking.end_date && @booking.reviews.count == 0 && @booking.user == current_user %>
+<%= link_to "Add Review", new_booking_review_path(@booking) %>
+<% end %>
