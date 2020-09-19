@@ -31,11 +31,10 @@ import { initTotalPriceDisplay } from '../components/init_total_price_display';
 import { toggleDateInputs } from '../components/init_booking_availability';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
-import { initMapbox } from '../plugins/init_mapbox';
 
 document.addEventListener('turbolinks:load', () => {
   initTotalPriceDisplay();
-  setTimeout(() => {initMapbox()}, 1000);
+  initMapbox();
   initAutocomplete();
   toggleDateInputs();
 });
