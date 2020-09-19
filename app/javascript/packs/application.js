@@ -29,13 +29,15 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { initTotalPriceDisplay } from '../components/init_total_price_display';
 import { initMapbox } from '../plugins/init_mapbox';
+import { toggleDateInputs } from '../components/init_booking_availability';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 
 
 document.addEventListener('turbolinks:load', () => {
   initTotalPriceDisplay();
-  setTimeout(() => {initMapbox()}, 1000);
+  initMapbox();
   initAutocomplete();
+  toggleDateInputs();
 });
 
 
