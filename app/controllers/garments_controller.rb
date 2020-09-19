@@ -72,11 +72,13 @@ class GarmentsController < ApplicationController
       end
     end
 
-
-    if @garment.user == current_user
-      @userowner = true
-    else
-      @userowner = false
+    @sum = 0
+    @reviews.each do |review|
+      @sum = @sum += review.rating
+      if @sum == 0
+      @average = 0
+      else @average = @sum / @reviews.count
+      end
     end
   end
 
