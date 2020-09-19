@@ -56,6 +56,7 @@ class GarmentsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
     @garment = Garment.find(params[:id])
     if @garment.user == current_user
       @userowner = true
