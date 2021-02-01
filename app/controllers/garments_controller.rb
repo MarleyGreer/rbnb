@@ -76,12 +76,11 @@ class GarmentsController < ApplicationController
     @reviews.each do |review|
       @sum = @sum += review.rating
       if @sum == 0
-      @average = 0
-      else @average = @sum / @reviews.count
+      @average == 0
+      else @average == sum / @reviews.count
       end
-    end
   end
-
+end
 
   def new
     @garment = Garment.new

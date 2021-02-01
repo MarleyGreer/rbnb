@@ -5,15 +5,14 @@
       <div class="input-group mb-3">
         <%= form_tag bookings_path, method: :get do%>
         <div class="input-group-prepend" style="display: flex">
-        <% if @bookings.empty? %> 
+        <% if @bookings.empty? %>
           <label class="input-group-text"for="inputGroupSelect01">No bookings</label>
-        <% else %>  
+        <% else %>
           <label class="input-group-text"for="inputGroupSelect01">Category</label>
-          <%= collection_select(:booking, :status, @bookings.select("DISTINCT(STATUS)").order(:status), :status, :status, @bookingselect, html_options = {class: "custom-select", id: "GarmentSelector", onchange: "this.form.submit()"}) %>
-        <% end%>
+
         </div>
         <% end %>
-        
+
       </div>
       </li>
     </div>
